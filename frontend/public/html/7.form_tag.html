@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> form 태그 실습 </title>
+</head>
+<body>
+
+<!-- <form></form> : 폼 [양식/형식] : 통신기능 
+					 사용자가 키보드/마우스 입력/선택 할 수 있는 서식
+	 <input/>	   		: 입력상자
+	 type="text"   		: 문자 형식 [ 기본값 ]
+	 type="password"	: 패스워드
+	 type="radio"		: 동그라미 선택버튼 [복수선택 x] *단 name 속성의 이름이 동일한 경우
+	 type="checkbox"    : 네모 선택버튼	  [복수선택 o]
+	 type="button"		: 이벤트 버튼	  * 추후 이벤트 버튼 사용
+	 type="submit"      : 폼 전송 	  * 추후에 통신 가능
+	 type="reset"		: 폼 초기화 
+	 
+	 name="식별이름"
+	 value="값"			: 입력상자에 입력된 데이터
+-->
+	<form>								<!-- form s -->
+		<input />											<br/>
+		<input type="text" />								<br/>
+		<input type="password" />							<br/>
+		<input type="radio" name="email" /> 예			
+		<input type="radio" name="email" /> 아니오			<br/>
+		<input type="checkbox" name="item" /> 뉴스		
+		<input type="checkbox" name="item" /> 드라마			<br/>
+		<input type="button" value="인증" />					&nbsp;
+		<input type="submit" value="폼전송" />				&nbsp;
+		<input type="reset" value="입력초기화" />				<br/>
+	</form>								<!-- from e -->
+
+
+</body>
+</html>
