@@ -8,30 +8,97 @@
 
 <!-- <form></form> : 폼 [양식/형식] : 통신기능 
 					 사용자가 키보드/마우스 입력/선택 할 수 있는 서식
-	 <input/>	   		: 입력상자
-	 type="text"   		: 문자 형식 [ 기본값 ]
-	 type="password"	: 패스워드
-	 type="radio"		: 동그라미 선택버튼 [복수선택 x] *단 name 속성의 이름이 동일한 경우
-	 type="checkbox"    : 네모 선택버튼	  [복수선택 o]
-	 type="button"		: 이벤트 버튼	  * 추후 이벤트 버튼 사용
-	 type="submit"      : 폼 전송 	  * 추후에 통신 가능
-	 type="reset"		: 폼 초기화 
+	 <input/>	   		   : 입력상자
+	 type="text"   		   : 문자 형식 [ 기본값 ]
+	 type="password"	   : 패스워드
+	 type="radio"		   : 동그라미 선택버튼 [복수선택 x] *단 name 속성의 이름이 동일한 경우
+	 type="checkbox"       : 네모 선택버튼	  [복수선택 o]
+	 type="button"		   : 이벤트 버튼	  * 추후 이벤트 버튼 사용
+	 type="submit"         : 폼 전송 	  * 추후에 통신 가능
+	 type="reset"		   : 폼 초기화
+	 type="color"		   : 색상 선택 
+	 type="date"		   : 날짜 선택
+	 type="datetime-local" : 날짜 / 시간 선택
+	 type="email"		   : 도메인 검사 (@ 유무 체크)
+	 type="month"		   : 날짜[월] 선택
+	 type="time"           : 시간 선택
+	 type="week"           : 주 선택
+	 type="range"          : 범위 스크롤
+	 type="number"         : 범위 내 숫자 입력
+	 type="file"		   : 첨부 파일 업로드
+	 multiple="multiple"   : 첨부 파일 여러개 업로드
 	 
 	 name="식별이름"
-	 value="값"			: 입력상자에 입력된 데이터
+	 value="값"			  	 	: 입력상자에 입력된 데이터
+	 readonly="readonly"	    : 읽기모드 [ 입력/수정 불가능 ]
+	 disabled="disabled" 	    : 사용금지
+	 placeholer="placeholder"	: 입력 가이드 문자열 [ 입력전에 무엇을 입력 해야하는지 가이드 ]
+	 autofocus="autofocus" 		: 포커스 [ 마우스 커서(깜박임) ] 위치
+	 
+	 checked="checked"	        : radio/checkbox 에서 주로 사용 체크여부 미리 활성/비활성화
+	 min/max="수량"				: range/number 타입에 사용 최저값/최댓값 지정
+	 
+	 <textarea></textarea>      : 긴글텍스트
+	 	rows="가로텍스트 길이"
+	 	cols="세로텍스트 길이"
+	 	style="reisze:none"     : 사이즈변경 X, 사이즈고정
+	 <select></select>			: 목록 상자
+	 <fieldset></fieldset>		: 필드를 지정
+	 <legend></legend>			: 필드 내 제목
+	 <hr>						: 구분선
 -->
+
 	<form>								<!-- form s -->
-		<input />											<br/>
-		<input type="text" />								<br/>
-		<input type="password" />							<br/>
-		<input type="radio" name="email" /> 예			
-		<input type="radio" name="email" /> 아니오			<br/>
-		<input type="checkbox" name="item" /> 뉴스		
-		<input type="checkbox" name="item" /> 드라마			<br/>
-		<input type="button" value="인증" />					&nbsp;
-		<input type="submit" value="폼전송" />				&nbsp;
-		<input type="reset" value="입력초기화" />				<br/>
-	</form>								<!-- from e -->
+		<fieldset>						<!-- 입력 그릅 s -->
+			<legend> 자주 사용되는 input </legend> <!-- 그룹의 타이틀 -->
+		
+			읽기모드 : <input value="인사과" readonly="readonly" />									<br/>
+			사용금지 : <input type="text" disabled="disabled" placeholder="입력 금지" />				<br/>
+			포커스 : <input type="password" placeholder="패스워드를 입력하세요" autofocus="autofocus" />	<br/><br/>
+			
+			[단일선택]																				<br/>
+			<input type="radio" name="email" checked="checked" /> 예			
+			<input type="radio" name="email" /> 아니오											<br/><br/>
+			
+			[복수선택]																				<br/>		
+			<input type="checkbox" name="item" /> 뉴스		
+			<input type="checkbox" name="item" /> 드라마											<br/><br/>
+			
+			[긴글텍스트]																			<br/>
+			<textarea rows="5" cols="10" style="resize:none"></textarea>						<br/><br/>
+			
+			[목록상자]
+			<select>
+				<option> 네이버 </option>
+				<option> 카카오 </option>
+				<option> 네이트 </option>
+			</select>																			<br/><br/>
+			
+			[첨부파일 (단일)]																		<br/>
+			<input type="file">																	<br/>
+			<hr>				<!-- 구분선 -->
+			[첨부파일 (복수)]																		<br/>
+			<input type="file" multiple="multiple">												<br/><br/>
+			
+			[버튼목록]																				<br/>
+			<input type="button" value="인증" />													&nbsp;
+			<input type="submit" value="폼전송" />												&nbsp;
+			<input type="reset" value="입력초기화" />												
+		</fieldset>						<!-- 입력 그룹 e -->
+		<br/>
+		<fieldset>
+			<legend> html5 이상부터 추가된 input </legend>
+			<input type="color" />																<br/>
+			<input type="date" />																<br/> 
+			<input type="datetime-local" />														<br/>
+			<input type="email" />																<br/>
+			<input type="month" />																<br/>
+			<input type="time" />																<br/>
+			<input type="week" />																<br/>
+			<input type="range" min=0 max=10 />													<br/>
+			<input type="number"min=0 max=10 />													<br/>
+		</fieldset>
+	</form>								<!-- form e -->
 
 
 </body>

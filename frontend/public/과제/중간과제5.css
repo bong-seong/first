@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+h3{ text-align: center; }
+
+
+#bd{
+	font-weight: bold;
+	text-align: center;
+}
+
+#ip1{
+	width: 100px;
+}
+
+#ip2{
+	width: 150px;
+}
+
+#ip3{
+	width: 200px;
+}
