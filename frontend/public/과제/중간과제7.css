@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+
+h1{
+	color: #ffa200;
+	display: inline;
+}
+
+span{
+	color: #ffa200;
+	font-weight: bold;
+}
+
+p{
+	background: #0f6878;
+	color: white;
+	padding: 20px;
+	line-height: 150%;
+	width: 500px;
+}
+
+.book_img{
+	width: 40%;
+	height: 40%;
+}

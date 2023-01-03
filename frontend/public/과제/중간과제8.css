@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+h3{
+	text-align: center;
+}
+
+.log_tb{
+	width: 400px;
+	margin: 0 auto;
+}
+
+
+/* input 크기변경 */
+
+.log_tb .id , .pwd {
+	height: 30px;
+	width: 200px;
+}
+
+.btn_login {
+	padding: 30px 20px;
+}

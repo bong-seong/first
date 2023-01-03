@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+/*
+
+h3 { 
+	text-align: center;
+	border-bottom: 1px solid red;
+	padding: 20px;
+	margin-top: 10px;
+ }
+
+.form{
+	margin: 0 auto;
+}
+
+.btn{
+	border-top: 1px solid red;
+	margin-top: 30px;
+	text-align: right;
+	padding: 15px;
+	
+}
+
+.col1{
+	width: 150px;
+	padding: 5px; 
+}
+
+.box{
+	height: 18px;
+	width: 200px; 
+}
+
+.sel{
+	height: 25px;
+	width: 100px;
+}
+*/
+
+
+
+
+.signup_title{
+	text-align: center;
+}
+
+.signup_form{
+	width: 600px;
+	margin: 0 auto;
+	border-top: solid 2px red;
+	border-bottom: solid 2px red;
+	padding: 30px; 
+}
+
+.signup_box li{
+	list-style-type: none;
+}
+
+.colums li{
+	display: inline-block
+}
+
+.colums {
+	padding: 5px;
+}
+
+.colums .col1 {
+	width: 120px;
+}
+
+.colums .col2 input {
+	width: 280px; 
+	height: 25px;
+}
+
+
+.colums .col2 select{
+	width: 100px;
+	height: 30px;
+}
+
+
+.btnbox{
+	width: 600px;
+	text-align: right;
+}
+
+.btnbox input{
+	padding: 10px 20px;
+	margin: 10px 10px 0px 0px;
+}
+
+.hello{
+	vertical-align: top;
+}
+
+
+
+
+
+
+
+
+
+
+

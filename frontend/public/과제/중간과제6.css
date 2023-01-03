@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+h3{
+	border-left: solid green 10px;
+	padding-left: 20px;
+}
+
+.list1{
+	border: solid 2px #cccccc ;
+	border-radius: 10px;
+	background: #eeeeee;
+	padding: 40px 50px;
+	box-sizing: content-box;
+	width: 500px;
+}
+
+
+li{
+	margin: 1px;
+	line-height: 160%;
+}
+
+.p1{
+	border: solid 2px gray;
+}
+
+div{
+	width: 300px;
+	border: solid 2px #cccccc;
+	border-radius: 20px;
+	box-sizing: content-box;
+	padding: 25px 20px;
+	margin: 30px;
+}
+
+#p1{
+	border-bottom: dotted 1px #cccccc;
+	padding-bottom: 20px;
+}
+
+a{
+	width: 100px;
+	font-weight: bold;
+	margin-left: 200px;
+	font-size: 14.5px;
+	/* a태그의 기본속성 제거 */
+	color: black;
+	text-decoration: none;	/* 밑줄제거 */
+}

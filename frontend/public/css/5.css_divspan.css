@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* 1. div 에 적용 */
+div{
+	border: solid 1px red;
+	margin: 20px; 
+}
+
+/* 2. span 에 적용 */
+span{
+	border: solid 1px #00ff00;
+}
+
+/* 3. s1 클래스에 적용 */
+.s1{
+	display: inline;
+	width: 200px;
+	height: 100px;
+}
+
+/* 4. 클래스에 적용 */
+.s2{
+	display: block;
+	width: 200px;
+	height: 100px;
+}
+
+.s3{
+	display: inline-block;
+	width: 200px;
+	height: 100px;
+}
+
+.s4{
+	display: none;
+	width: 200px;
+	height: 100px;
+}
+
+
+.d1{
+	display: inline;
+	width: 200px;
+	height: 100px;
+}
+
+.d2{
+	display: block;
+	width: 200px;
+	height: 100px;
+}
+
+.d3{
+	display: inline-block;
+	width: 200px;
+	height: 100px;
+}
+
+.d4{
+	display: none;
+	width: 200px;
+	height: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
