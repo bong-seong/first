@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+/* TOP MENU */
+
+.top_menu{
+	height: 10px;
+	background: #0a94b6;
+}
+
+.btn_box{
+	background: black;
+	text-align: right;
+	padding-bottom: 5px;
+}
+
+.top_btn{
+	padding: 50px 20px 20px 20px;
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+}
+
+
+/* TOP MENU */
+
+
+/* MAIN CONTENTS */
+
+.maintext{
+	text-align: center;
+}
+
+.html , .html_css{
+	border: solid 1px black;
+	margin: 0 auto;
+	margin-top: 20px;
+	width: 700px;
+}
+
+.html h4{
+	padding: 10px 0px 10px 30px;
+}
+
+.html_css h4{
+	padding: 10px 0px 10px 30px;
+}
+
+.link{
+	padding-left: 50px;	
+}
+
+.footer{
+	border-top: solid 1px #eeeeee;
+	margin-top: 100px;
+}
+
+/* MAIN CONTENTS */
+
+
+/* footer */
+
+.foot_text{
+	padding: 30px;
+}
+
+/* footer */

@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+#web_box{
+	border: solid 1px red; 	
+}
+
+#header{
+	
+	height: 200px;
+	background: blue;
+}
+
+#content{
+	
+	height: 600px;
+	margin: 0 auto;
+	background: orange;
+	width: 1200px; 			/* pc: 1050px ~ 1300px; */
+	display: flex;
+}
+
+#content #left_menu{
+	
+	background-color: gray;
+	height: 600px;
+	width: 900px; 			/* 부모[상위요소]: 1200px / 부모-본인 = 300px - 4px; */	
+}
+
+#content #right_menu{
+	
+	background-color: purple;
+	height: 600;
+	width: 290px;
+}
+
+#footer{
+	
+	background-color: black;
+	height: 200px;
+}
