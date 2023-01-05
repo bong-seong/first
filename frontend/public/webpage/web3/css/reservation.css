@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+/* 메인 이미지 */
+
+#sub_img2
+{ background-image: url("../img/sub_reservation.jpg"); }
+
+/* ============================================== */
+
+
+/* 컨텐츠1 */
+#reservation_cont
+{ width: 1200px; margin: 0 auto; 
+  display: flex; padding: 70px 0px; 
+}
+
+.calendar_back
+{ background-color: #fcf9ea; width: 750px; 
+   padding-bottom: 30px; 
+}
+
+.calendar_back ul , .calendar_back p 
+{ text-align: center; }
+
+.calendar_back ul
+{ padding: 20px; }
+
+.calendar_back p 
+{ padding-top: 30px; font-size: 10px; }
+
+.calendar_back li
+{ display: inline-block; }
+
+.calender
+{ margin: 0 auto; background-color: white; }
+
+.calender , .calender th , .calender td
+{ border: solid 1px black;
+  border-collapse: collapse; 
+} 
+
+.calender th
+{ width: 90px; height: 30px; }
+
+.calender td
+{ width: 90px; height: 100px; vertical-align: top; padding-left: 5px; }
+
+.item_deco
+{ color: red; }
+
+
+.info h2
+{ border-left: solid 7px gray; margin: 20px; padding: 0px 20px; }
+
+.info li
+{ margin-left: 20px; padding: 5px; }
+
+.info p
+{ width:320px; margin-left: 20px; padding: 5px; color: green; }
+
+/* ============================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
