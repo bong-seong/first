@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+/* * { border: solid 1px black; } */ 
+
+a{
+	color: black;
+	text-decoration: none;
+}
+
+a:hover{ /* 해당 요소에 마우스를 올렸을 때 CSS */
+	color: orange;
+}
+
+a:active{ /* 마우스를 클릭할때의 순간 */
+	color: blue;
+	font-size: 5px;
+}
+
+a:visited{ /* 클릭한 흔적이 있을때 */
+	color: red; 
+}
+
+#header{
+	background-color: #eeeeee;
+	display: flex;
+	justify-content: center;
+}
+
+#header .drop_menu {
+	display: inline-block;
+	margin-right: 50px; 
+}
+
+.drop_menu{ position: relative; }
+
+/* 상위요소와 하위 요소의 접점이 있어야한다. */ 
+.sub_menu{
+	position: absolute; top: 20px; left: -30px;
+	display: none; /* 숨기기 (화면에 표시 x) */
+	width: 100px;
+	font-size: 10px; 
+	padding-top: 40px; /* padding 여백을 넣음으로써 상위요소와 간격을 조정한다. */ 
+	border-bottom: 1px solid red;
+	border-left: 1px solid red;
+	border-right: 1px solid red; 
+}
+
+/* .drop_menu a{ width: 300px; } */
+.drop_menu:hover .sub_menu{ display: block; } /* 보여주기 */
+
+
+
+
+
+
+
+
+
+
