@@ -39,14 +39,17 @@ a{ text-decoration: none; color: black; }
 /* 로그인 박스 END */
 
 /* 카테고리 박스 */
-.ctg_box{
-	display: flex;
-	align-items: center;
-	padding: 25px 35px;
+#header{
 	position: sticky;
 	top: 0px;
 	background-color: white;
 	opacity: 70%;
+}
+
+.ctg_box{
+	display: flex;
+	align-items: center;
+	padding: 25px 35px;
 }
 
 .ctg_box img { height: 20px; margin-right: 15px;}
