@@ -1,82 +1,112 @@
 @charset "UTF-8";
 
-/* * { border: solid 1px blue; } */
-
-* { padding: 0px; margin: 0px; }
-a{ color: #1c1c1c; text-decoration: none; }
 
 
+*{ padding: 0px; margin: 0px; }
+a{ text-decoration: none; color: black; }
 
-/* 1. 헤더 */
-#header{
-	text-align: right; 
+
+/* ======================================================== */
+
+/* ========================= 헤더 ========================== */
+/* 로그인 박스 */
+.login_box{
+	text-align: right;
+	padding-right: 55px;
+	padding-bottom: 20px;
+	margin-top: 7px;
+	position: relative;
+	border-bottom: solid 1px #d8d8d8;
 }
 
-.login_menu { border-bottom: 1px solid #c0c0c0; padding: 10px 0px; }
-.login_menu span { color: gray; font-size: 8px;}
-.login_menu {margin-right: 20px; }
-
-.login_menu li{ 
-	display: inline-block;
-	padding: 0px 15px;
-	font-size: 11px; 
+.login_box a{
 	color: #1c1c1c;
+	font-size: 11px;
+	margin: 10px; 
 }
 
-.prod_category{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 20px 40px;
-	border: solid 1px blue;
-}
-
-.prod_category li { 
-	display: inline-block;
-	padding: 0px 15px;
-	font-size: 11px; 
+.login_box span{
+	font-size: 10px;
 	color: #1c1c1c;
-	border: solid 1px red;
+	margin: 5px; 
 }
 
+.login_box img{
+	position: absolute;
+	right: 35px; top: 5px;
+	height: 16px;
+}
+/* 로그인 박스 END */
 
+/* 카테고리 박스 */
 .ctg_box{
 	display: flex;
 	align-items: center;
+	padding: 25px 35px;
+	position: sticky;
+	top: 0px;
+	background-color: white;
+	opacity: 70%;
 }
 
-.ctg_box img { width: 100%; height: 100%; }
+.ctg_box img { height: 20px; margin-right: 15px;}
+.ctg_box span {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 1px; 
+	font-size: 12px;
+	font-weight: bold; 
+	color: #1c1c1c;
+	width: 70px;
+	text-align: center;
+}
 
-.category a { font-weight: bold; font-size: 12px; }
+.item_ef { color: red; }
 
+.drop_menu { position: relative; }
 
-#drop_menu{ position: relative; }
-
-#sub_menu{
+.sub_menu{
 	display: none;
 	position: absolute;
 	background-color: white;
 	width: 130px;
-	right: -33px;
-	font-weight: bold;	 
-	color: #1c1c1c;
-	padding-top: 30px;
-	border: solid 1px blue;
 	text-align: center;
-}
-
-#sub_menu li { 
-	border: solid 1px blue;
-	margin: 3px 0px;
-	font-size: 12px;
-}
-
-#drop_menu a:hover{
-	color: #b8b8b8;
-}
-
-#drop_menu:hover #sub_menu{
-	display: block;
+	padding-top: 30px;
+	right: -30px;
 }
 
 
+.drop_menu a:hover{ color: #b8b8b8; }
+.drop_menu:hover .sub_menu{ display: block; }
+.sub_menu li { display: block; margin: 10px;  }
+/* 카테고리 박스 END */
+
+
+/* 서치박스 */
+.search_box{ 
+	position: relative;
+	border-bottom: solid 1px #1c1c1c;
+	margin-left: 120px;
+	width: 160px;  
+}
+
+.input_box{ outline: none; }
+.search_box .input_box { 
+	width: 100%; height: 25px;
+	border: none;
+	padding: 0px 10px;
+}
+
+.search_box img{
+	position: absolute;
+	top: 0px; right: 0px;
+	height: 17px;
+}
+/* 서치박스 END */
+
+/* 카테고리 박스 고정 */
+
+
+
+/* 카테고리 박스 고정 END */
+/* 카테고리 박스 END*/
+/* ======================================================== */
