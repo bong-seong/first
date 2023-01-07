@@ -161,6 +161,9 @@ li { list-style: none; }
 	padding: 30px 0px 50px 0px;
 }
 
+
+/* 픽스 사이드바 */
+
 .fix_side_bar { 
 	position: fixed; top: 35%; right: 0px;
 }
