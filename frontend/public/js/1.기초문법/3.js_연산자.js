@@ -250,26 +250,19 @@ let top1 = n1
 let middle1 = n2
 let bottom1 = n3
 
-top1 = n1 < n2 ? n2 : 
-	   n1 < n3 ? n3 : 
-	   n2 < n3 ? n3 :
-	   n2 > n3 ? n2 : top1
-console.log(top1)	   
-	  
-middle1 =  n2 > n1 ? n1 :
-		   n2 < n3 ? n3 :
-		   n1 > n3 ? n3 : 
-		   n1 < n3 ? n1 : middle1
-		  
-console.log(middle1) 
-	 
-bottom1 = n3 > n1 ? n1 :
-		  n3 > n2 ? n2 :
-		  n1 > n2 ? n2 :
-		  n1 < n2 ? n1 :  bottom1
-console.log(bottom1) 
+top1 = n1 < n2 && n3 < n2 ? n2 :
+       n1 < n3 && n2 < n3 ? n3 : top1
 
-console.log(n1 + ", " + n2 + ", " + n3 + " 입력한 세 수의 오름차순 정렬은" + top1 + ", " + middle1 + ", " + bottom1 )
+middle1 = n1 < n2 && n1 > n3 ?  n1 :
+          n1 > n2 && n1 < n3 ?  n1 :
+          n3 < n2 && n3 > n1 ?  n3 :
+          n3 > n2 && n3 < n1 ?  n3 : middle1
+
+bottom1 = n1 < n3 && n1 < n2 ? n1 :
+          n2 < n3 && n2 < n1 ? n2 : bottom1
+         
+
+console.log( n1 + ", " + n2 + ", " + n3 + " 입력한 세 수의 오름차순 정렬은" + top1 + ", " + middle1 + ", " + bottom1 )
 
 
 
