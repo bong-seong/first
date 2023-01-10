@@ -116,6 +116,46 @@ li { list-style: none; }
 /* ======================================================== */
 
 
+
+.sub_img_box{
+	text-align: center;
+	width: 1600px;
+	margin: 0 auto;
+}
+.sub_img_box img { padding: 150px 20px;}
+
+.prod_item { width: 1450px; margin: 0 auto; }
+.prod_item h3{ text-align: center; }
+.prod_item h4{ text-align: center; }
+
+
+.item_box { width: 400px; }
+.item_box img{
+	height: 550px;
+	width: 100% 
+}
+.color_reveiw {
+	display: flex;
+	justify-content: space-between;
+	width: 400px; 
+}
+
+.prod_item *{ border: solid 1px red; }
+.item_name {
+	font-size: 12px;
+	color: #1c1c1c;
+}
+
+.item_size {
+	font-size: 12px;
+	color: #a0a0a0;
+}
+
+.color_box2{ color: gray; }
+.color_box3{ color: orange; }
+
+
+
 /* ========================= 푸터 ========================== */
 /* 푸터 탑 */
 .info_top{
