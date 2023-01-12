@@ -24,7 +24,8 @@
 	document.querySelector('.ggd_table').innerHTML = table_tr*/
 
 function output(){
-	let table_tr = "<tr> <th> 단 </th> <th> 곱 </th> <th> 행 </th> </tr>";
+	let table_tr = "<tr> <th> 단 </th> <th> 곱 </th> <th> 결과 </th> </tr>";
+	
 	let dan_input = document.querySelector(".dan").value
 	let gop_input = document.querySelector(".gop").value
 	
@@ -34,14 +35,4 @@ function output(){
 	}
 	document.querySelector('.ggd_table').innerHTML = table_tr 
 }
-
-
-
-
-
-
-
-
-
-
 
