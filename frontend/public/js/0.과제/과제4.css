@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+*{ background-color: black; color: white; } /* 연동확인용 */
+
+.wrap { display: flex; }
+
+.content{
+	width: 50%;
+	border: solid 1px white; 
+}
