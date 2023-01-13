@@ -22,7 +22,8 @@ function addBook(){
 		alert('중복된 도서명입니다.')
 		return;
 	}
-	
+	console.log( 도서목록 )
+	console.log( 대여목록 )
 	bookListPrint()
 	customerList()
 }
@@ -30,7 +31,15 @@ function addBook(){
 
 // 김성봉
 function delBook(i){
+	for( value of 도서목록 ){
+		if( 대여목록.includes( 도서목록[i] ) == true ){
+			alert( '대여중인 도서는 삭제가 불가능힙니다.')
+			return; 
+		}
+	}
+	
 	도서목록.splice( i, 1 )
+	
 	bookListPrint()
 	customerList()
 }
@@ -49,7 +58,7 @@ function bookListPrint(){
 
 	for( i=0 ; i<도서목록.length ; i++ ){
 			
-			if( 도서목록.indexOf( 대여목록[i] ) >= 0 ){
+			if( 대여목록.includes( 도서목록[i] ) == true ){
 				adminTable +=
 				`<tr>
 					<td> ${i+1} </td> 
@@ -79,15 +88,29 @@ bookListPrint()
 
 
 function bookRental(i){
-	대여목록.push(i)
+	for( value of 도서목록 ){
+		if ( 대여목록.includes( 도서목록[i] ) == true ){
+			alert('대여중인 도서입니다.')
+			return;
+		}
+	}
+	대여목록.push( 도서목록[i] )
 	bookListPrint()
 	customerList()
+	
 }
 
 
 
 function bookReturn(i){
-	대여목록.splice( i , 1 )
+	for( value of 도서목록 ){
+		if ( 대여목록.includes( 도서목록[i] ) == false ){
+			alert('대여하지 않은 도서입니다.')
+			return;
+		}
+	}
+	
+	대여목록.splice( 대여목록.indexOf(도서목록[i]) , 1 )
 	bookListPrint()
 	customerList()
 }
@@ -105,7 +128,7 @@ function customerList(){
 
 	for( i=0 ; i<도서목록.length ; i++ ){
 			
-			if( 도서목록.indexOf( 대여목록[i] ) >= 0 ){
+			if( 대여목록.includes( 도서목록[i] ) == true ){
 				cusTable +=
 				`<tr>
 					<td> ${i+1} </td> 
@@ -121,16 +144,19 @@ function customerList(){
 					<td class="off"> 대여가능 </td>
 					<td> <button onclick="bookRental(${i})"> 대여 </button> / <button onclick="bookReturn(${i})"> 반납 </button> </td>
 				 </tr>`
-			}
-		
+		}
 		
 		document.querySelector('.cusList').innerHTML = cusTable ;
 	}	
 }
 
+
+
+
+
+
+
 customerList()
-
-
 
 
 
