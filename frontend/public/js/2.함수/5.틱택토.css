@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/*
+	
+	선택자
+		1. 마크업{ }
+		2. .class명{ }
+		3. #id { }
+		4. *{ }
+	하위 선택자
+		1. 상위선택자 하위선택자 [ 띄어쓰기로 구분 ]
+
+*/
+
+.게임판{
+	width: 50%;			/* 가로사이즈 */
+	margin: 0 auto ;	/* 가운데정렬 */
+	display: flex; 
+	flex-wrap: wrap; /* 자동줄바꿈 / nowrap : 기본값 */
+}
+
+.게임판 div{ /* class명이 게임판 아래에 있는 div 선택 */ 
+	width: 30%; height: 150px ;
+	border: solid 5px white;
+	background-color: #a2ecbf; 
+	font-size: 110px; 
+	align-items: center; text-align: center;
+	color: white; 
+}
+
+
+
+
