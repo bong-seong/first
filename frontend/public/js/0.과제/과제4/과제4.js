@@ -16,6 +16,7 @@ function bookListPrint(){
 	for( i=0 ; i<도서목록.length ; i++ ){ // for 반복문을 사용하여 adminTable 에 데이터 중첩 
 			
 			// if 제어문을 통한 대여여부 판단, 도서목록 배열 활용
+			// 대여목록.includes( 도서목록[i] ) ? '대여중' : '대여가능'
 			if( 대여목록.includes( 도서목록[i] ) == true ){ // 대여목록을 도서목록[i] 만큼 includes 하여 ture 중복일경우 
 				adminTable +=						   // 아래의 값을 중첩
 				`<tr>
@@ -23,7 +24,7 @@ function bookListPrint(){
 					<td> ${도서목록[i]} </td>
 					<td class="on"> 대여중 </td>
 					<td> <button onclick="delBook( ${i} )"> 삭제 </button> </td>
-				 </tr>`
+				 </tr>` // !!**** 대여목록.includes( 도서목록[i] ) ? '대여중' : '대여가능' 삼항연산자를 활용하면 코드가 짧아짐 ****!!
 			}else{									   // false 중복이 아닌경우 아래의 값을 중첩
 				adminTable +=
 				`<tr>
