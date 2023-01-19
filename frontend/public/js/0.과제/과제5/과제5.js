@@ -1,5 +1,5 @@
 
-
+// *-----------------------------------------------------------------------------------* //
 // 등록된 카테고리 목록
 let categoryList = [ '프리미엄', '스페셜', '와퍼', '올데이킹', '치킨버거' ]
 
@@ -14,9 +14,9 @@ let burgerList = [
 let cartList = [] // 카트 목록
 let orderList = [] 
 
-categoryPrint();
-categoty_select( 0 );
-productPrint( 0 );
+categoryPrint();		// 카테고리 호출 함수를 호출
+categoty_select( 0 );	// 카테고리 선택시 css 변경/카테고리별 제품출력 함수 호출 / 기본값 : 프리미엄
+
 
 // 1. 카테고리 출력하는 함수 // [1. js 열렸을때 ]
 function categoryPrint(){
@@ -62,7 +62,7 @@ function productPrint( index ){
 		
 		if( burgerList[i].category == categoryList[index]){
 			// i번째 버거객체의 카테고리와 선택된 카테고리가 같으면 
-			html = `<div class="product" onclick="cartAdd( ${ i } )">
+			html += `<div class="product" onclick="cartAdd( ${ i } )">
 						<img src="img/${ burgerList[i].img }" width="100%"/>
 						<div class="productinfo">
 							<div class="ptitle">${burgerList[i].name} </div>
@@ -97,9 +97,7 @@ function cancel(){
 function order(){
 	alert('주문 합니다.');
 	
-	console.log( '주문하기전' ) 
-	console.log( cartList ) 
-	// 1. 주문번호 만들기 // 마지막인덱스 : 배열명.length-1
+		// 1. 주문번호 만들기 // 마지막인덱스 : 배열명.length-1
 	let no = 0;
 		// 1. 만약에 길이가 0이면 [ 주문이 하나도 없으면 주문번호 1 ]
 	if( orderList.length == 0 ){ no = 1 ;}
@@ -119,15 +117,14 @@ function order(){
 		let order = { 
 			no : no,
 			items : 새로운배열,		// 카트배열 ---> 새로운배열 
-			time : new Date(), 	// new Date() : 현재 날짜/시간 호출 함수 
-			state : true ,		// true : 일단 주문 // false : 주문 전 
+			time : dateFormat(today), 	// new Date() : 현재 날짜/시간 호출 함수 
+			state : false,		// true : 일단 주문 // false : 주문 전 
 			complete : 0,		// 아직 주문 완료 되기 전
 			price : total
 		}
 		
 		// 2. order 객체 배열에 저장
-		console.log( '주문 후 ' ) 
-		console.log( orderList )
+		
 		
 		
 	orderList.push( order )
@@ -136,6 +133,7 @@ function order(){
 	 
 	cartList.splice(0)
 	cart_print();
+	orderContol();
 }
 
 
@@ -161,10 +159,203 @@ function cart_print(){
 	document.querySelector('.cartbottom').innerHTML = html
 }
 
+// #################################################################################### //
+// ########################                                    ######################## //
+// ########################            관리자페이지 js             ######################## //
+// ########################                                    ######################## //
+// #################################################################################### //
+
+/* 확인용 주석입니다. *******************************************************************
+
+categoryList = [ '프리미엄', '스페셜', '와퍼', '올데이킹', '치킨버거' ]
+
+// 등록된 버거 목록
+	burgerList = [
+	{ name: '기네스와퍼', price: 10000, img: '기네스와퍼.png', category: '프리미엄' },
+	{ name: '스태커3와퍼', price: 9500, img: '스태커3와퍼.png', category: '와퍼' },
+	{ name: '오믈렛킹모닝', price: 7000, img: '오믈렛킹모닝.png', category: '올데이킹' }
+]
+
+cartList = [] // 카트 목록
+orderList = [] 
+
+확인용 주석입니다. ******************************************************************* */
+
+totalBurger() // 제품 리스트 출력용 함수호출
+
+
+// 입력 버튼을 눌렀을때 정보를 객체에 담는 함수
+function addBurger(){
+	
+	let newBurger = {
+		name: document.querySelector('.n_name').value, 
+		category: document.querySelector('.n_category').value,
+		price: parseInt(document.querySelector('.n_price').value),
+		img: document.querySelector('.n_img').value
+	}
+	
+	// 유효성검사 : 카테고리 배열에 존재하는 카테고리만 입력가능 
+	if(categoryList.indexOf( newBurger.category ) == -1 ){
+			alert('등록되지 않은 카테고리입니다. [등록실패]')
+			return;
+	}
+	// 유효성검사 : 문자입력 불가능 / 숫자형식만 입력가능
+	if( isNaN(newBurger.price) ){ alert('가격은 숫자 형식만 입력가능합니다. [등록실패] '); return; }
+	
+	burgerList.push( newBurger )
+	
+	
+	totalBurger()
+	
+}
+
+
+// 전체 버거 리스트 출력 함수 
+function totalBurger(){
+	// 1. html 구성
+	let html = `<tr>
+					<th> 번호 </th> <th> 이미지 </th> <th> 버거이름 </th> 
+					<th> 카테고리 </th> <th> 가격 </th> <th> 비고 </th>
+				</tr>`
+	// 2. 반복문을 활용하여 테이블에 제품 출력
+	for( let i=0 ; i<burgerList.length ; i++ ){
+		
+		html += `<tr>
+					<td> ${i+1} </td> 
+					<td> <img class="s_img" src="img/${burgerList[i].img}"> </td> 
+					<td> ${burgerList[i].name} </td> 
+					<td> ${burgerList[i].category} </td> 
+					<td class="price_edit${i}"> ${burgerList[i].price.toLocaleString()}원 </td> 
+					<td> 
+						<button type="button" onclick="burgerDel( ${i} )"> 삭제 </button>
+						<button type="button" onclick="burgerEdit( ${i} )"> 수정 </button> 
+					</td>
+				</tr>`
+	}		
+	document.querySelector('.admin_burger_list').innerHTML = html
+}
+
+
+// 삭제버튼 함수
+let upindex = -1
+function burgerDel( i ){
+	upindex = i
+	burgerList.splice( i , 1 )
+	totalBurger()
+}
+
+// 수정버튼 함수
+function burgerEdit( i ){
+	upindex = i
+	document.querySelector('.price_edit' + i ).innerHTML = 
+	`<input type="text" class="commit_price"> <button onclick="commitPrice( ${upindex} )"> 확인 </button>`
+}
+
+// 수정 확인 버튼을 눌렀을때 함수
+function commitPrice( i ){
+	burgerList[i].price = parseInt(document.querySelector('.commit_price').value) 
+	totalBurger()
+}
+
+
+orderContol()
+// 주문 된 주문목록 현황 출력
+function orderContol(){
+	
+	// 1. html 구성
+	let html = `<tr>
+					<th> 주문번호 </th> <th> 버거이름 </th> 
+					<th> 상태 </th> <th> 요청완료일 </th> <th> 비고 </th>
+				</tr>`
+	for( let i=0 ; i<orderList.length ; i++ ){
+		for( let j=0 ; j<orderList[i].items.length ; j++ ){
+			html += `<tr>
+						<td> ${orderList[i].no} </td>
+						<td> ${orderList[i].items[j].name} </td>		 
+						<td> ${orderList[i].state ? '주문완료' : '주문요청' } </td> 
+						<td> ${orderList[i].state ? orderList[i].time : '' } </td> 
+						<td> <button type="button" onclick="orderComplet(${i})"> 주문완료 </button> </td>
+					</tr>`
+		}
+	}
+	document.querySelector('.admin_order_list').innerHTML = html
+}
+
+
+// 주문완료 버튼을 눌렀을때 함수
+function orderComplet( i ){
+	orderList[i].state = true
+	orderContol()
+	totalOrder()
+}
+
+
+let burgerArray = []
+let burgetCount = 1; 
+totalOrder()
+// 매출액 출력 함수
+function totalOrder(){
+	
+	// 1. html 구성
+	let html = `<tr>
+					<th> 제품번호 </th> <th> 버거이름 </th>
+					<th> 판매수량 </th> <th> 매출액 </th> <th> 순위 </th>
+				</tr>`
+	
+	/*let burgerCount = 1;*/
+	
+	
+	for( let i=0 ; i<orderList.length ; i++ ){
+		for( let j=0; j<orderList[i].items.length ; j++ ){
+			if( orderList[i].items[j].name == burgerArray[j] ){ burgetCount++ }
+			else{ burgerArray += orderList[i].items[j].name }
+		}
+	}
+	console.log ( burgerArray )
+	console.log ( burgetCount )
+		/*if( orderList[i].state ){
+					html += `<tr>
+								<td> 제품번호 </td> 
+								<td> ${ o.items[i].name } </td>
+								<td> ${burgerCount} </td> 
+								<td> 2*9500 </td> 
+								<td> 2 </td>
+							</tr>`		
+		}*/
+			
+	document.querySelector('.admin_total_list').innerHTML = html
+}
+
+// 오더리스트안에 버거네임이 버거리스트의 네임과일치하며 해당 버거의 인덱스 indexOf
 
 
 
 
+
+
+// ****************************************************************************************** //
+// 날짜 표시 형식 변경 ( 인터넷 복붙입니다. )
+
+let today = new Date();
+
+function dateFormat(date) {
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        let hour = date.getHours();
+        let minute = date.getMinutes();
+        let second = date.getSeconds();
+
+        month = month >= 10 ? month : '0' + month;
+        day = day >= 10 ? day : '0' + day;
+        hour = hour >= 10 ? hour : '0' + hour;
+        minute = minute >= 10 ? minute : '0' + minute;
+        second = second >= 10 ? second : '0' + second;
+
+        return date.getFullYear() + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+}
+
+// 날짜 표시 형식 변경 ( 인터넷 복붙입니다. )
+// ****************************************************************************************** //
 
 
 

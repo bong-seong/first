@@ -125,12 +125,45 @@
 
 
 
+/* ======================== 관리자페이지 ====================== */
+/* ======================== 관리자페이지 ====================== */
+/* ======================== 관리자페이지 ====================== */
+/* ======================== 관리자페이지 ====================== */
+
+
+/* 버거 등록 sector */
+.add_burger_box{ text-align: center; }
+.adm_burger_box , .adm_order_box , .adm_sales_box{ margin: 30px; }
+.add_burger_box h3{ margin: 20px; }
+.add_input_btn { text-align: right; }
+.add_input_btn button { width: 30%; height: 30px; }
+
+.add_input_table{ margin: 0 auto ;}
+.admin_burger_list , .admin_order_list , .admin_total_list{ 
+	width: 100%; text-align: center; margin: 0 auto;
+  
+}
 
 
 
+.admin_burger_list , .admin_burger_list tr , .admin_burger_list td , .admin_burger_list th{
+	border: solid 1px black;
+	border-collapse: collapse;
+}
+.s_img{ width: 100%; }
+.admin_burger_list td { width: 50px; height: 50px; }
+.admin_burger_list input { width: 50px; }
 
 
+.admin_order_list , .admin_order_list tr , .admin_order_list td , .admin_order_list th{
+	border: solid 1px black;
+	border-collapse: collapse;
+}
 
+.admin_total_list , .admin_total_list tr , .admin_total_list td , .admin_total_list th{
+	border: solid 1px black;
+	border-collapse: collapse;
+}
 
 
 
