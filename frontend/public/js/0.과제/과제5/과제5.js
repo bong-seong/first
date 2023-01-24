@@ -13,6 +13,7 @@ let burgerList = [
 
 let cartList = [] // 카트 목록
 let orderList = [] 
+ 
 
 categoryPrint();		// 카테고리 호출 함수를 호출
 categoty_select( 0 );	// 카테고리 선택시 css 변경/카테고리별 제품출력 함수 호출 / 기본값 : 프리미엄
@@ -290,9 +291,8 @@ function orderComplet( i ){
 }
 
 
-let burgerArray = []
-let burgetCount = 1; 
-totalOrder()
+
+
 // 매출액 출력 함수
 function totalOrder(){
 	
@@ -301,35 +301,169 @@ function totalOrder(){
 					<th> 제품번호 </th> <th> 버거이름 </th>
 					<th> 판매수량 </th> <th> 매출액 </th> <th> 순위 </th>
 				</tr>`
+	let count = 0;
+	let rankArray = []
+	let rank = 1
 	
-	/*let burgerCount = 1;*/
+	for( let i=0 ; i<burgerList.length ; i++ ){
+		
+		count = 0
+		rank = 1
+		
+		html += `<tr>
+					<td> ${ i+1 } </td> 
+					<td> ${ burgerList[i].name } </td>`
+		for( let j=0 ; j<orderList.length ; j++ ){
+			for( let k=0 ; k<orderList[j].items.length ; k++ ){
+				if( orderList[j].items[k].name == burgerList[i].name ){ 
+					count++
+				}
+				console.log( count*burgerList[i].price )
+				console.log(count)
+				console.log(orderList[j].items[k].name)
+				console.log(burgerList[i].name)
+				console.log( rankArray )
+				rankArray.splice( i , 1 , count*burgerList[i].price )
+			}
+		}	
+		
+		rankArray.forEach( (o, i)=>{
+			rankArray.forEach( (o2)=>{
+				if( o < o2 ){ rank++ }
+			})
+		})	
+		
+		html += `<td> ${ count } </td>
+				<td> ${ parseInt(count*burgerList[i].price).toLocaleString() } 원 </td>
+				<td> ${ rank } </td>
+			</tr>`	
 	
+	
+	
+	/*rankArray.forEach( (o)=>{
+		
+		rank = 1
+								
+		rankArray.forEach( (o2)=>{
+			if( o < o2 ){ rank++ }
+			console.log('비교 : ' + o < o2)
+			
+		}) 
+	})*/
+	
+	
+	}
+	
+	
+		
+	
+	
+	/*let productName = []
+	let bgNameCheck = []
+	let burgercount = 1;
 	
 	for( let i=0 ; i<orderList.length ; i++ ){
-		for( let j=0; j<orderList[i].items.length ; j++ ){
-			if( orderList[i].items[j].name == burgerArray[j] ){ burgetCount++ }
-			else{ burgerArray += orderList[i].items[j].name }
+		
+		burgercount = 1
+		
+		for( let j=0 ; j<orderList[i].items.length; j++ ){
+			
+			bgNameCheck = orderList[i].items[j].name
+			console.log( orderList[i].items[j].name )
+			if( productName.includes( bgNameCheck ) ){ burgercount++ }
+			else( productName.push( bgNameCheck ) )
+			console.log( productName )
+			console.log( burgercount )		
+		}
+		html += `<td> ${ burgercount } </td>`
+	}
+					`<td> 0 </td> 
+					<td> 0 </td> 
+				</tr> */
+	/*let burgerCount = 1;
+	
+	let obj = orderList.map( (obj)=>{ return obj ; })
+	console.log( obj )
+	let total = 0;
+	for( let i=0 ; i<obj.lengh ; i++ ){ total += obj[i].price }
+	
+	let stat = {
+		seq: 0,
+		items: obj,
+		count: 0,
+		price: total,
+		rank: 0
+	}
+	
+	*/
+		
+		
+		/*for(let i=0 ; i<o.items.length ; i++ ){ 
+			console.log( o.items[i].name )
+			if( burgerList.includes( o.items.name )){ return; }
+		}*/	
+	
+	
+		
+	// 만약에 버거리스트의 네임과 오더리스트의 네임이 같다면 count1 증가
+	
+	
+	/*for( let i=0 ; i<orderList.length ; i++ ){
+		for( let j=0 ; j<orderList[i].items.length ; j++ ){
+			html += `<tr>
+					<td> ${ i+1 } </td> 
+					<td> ${ burgerList[i].name } </td>
+					<td> ${ orderCountCheck() } </td> 
+					<td> 0 </td> 
+					<td> 0 </td>
+				</tr>`
 		}
 	}
-	console.log ( burgerArray )
-	console.log ( burgetCount )
-		/*if( orderList[i].state ){
-					html += `<tr>
-								<td> 제품번호 </td> 
-								<td> ${ o.items[i].name } </td>
-								<td> ${burgerCount} </td> 
-								<td> 2*9500 </td> 
-								<td> 2 </td>
-							</tr>`		
-		}*/
-			
+
+
+	console.log ( orderCountCheck() )*/
+	
 	document.querySelector('.admin_total_list').innerHTML = html
 }
 
-// 오더리스트안에 버거네임이 버거리스트의 네임과일치하며 해당 버거의 인덱스 indexOf
+// 오더리스트안에 버거네임이 버거리스트의 네임과일치하며 해당 버거의 인덱스 indexOf'
 
 
 
+/*function orderCountCheck(){
+	
+	let productName = []
+	let totalprice = 0;
+	let totalrank = 1;
+	let burgercount = 1;
+	let bgNameCheck = {
+		name: productName,
+		count: burgercount,
+		price: totalprice,
+		rank: totalrank
+	}
+	
+	for( let i=0 ; i<orderList.length ; i++ ){
+		
+		for( let j=0 ; j<orderList[i].items.length; j++ ){
+			bgNameCheck = orderList[i].items[j].name
+			console.log( orderList[i].items[j].name )
+			if( productName.includes( bgNameCheck.name ) ){ burgercount++ }
+			else( bgNameCheck.name = productName ) 
+			console.log( productName )
+			console.log( burgercount )
+			console.log( bgNameCheck )
+			console.log( bgNameCheck )
+		}
+	}
+}*/
+
+
+
+// let 새로운배열 = cartList.map( (o)=>{ return o; } )
+/*for( let j=0 ; j<orderList[i].items.length ; j++ ){
+			oName[j] += orderList[i].items[j].name
+		}*/
 
 
 
@@ -354,7 +488,7 @@ function dateFormat(date) {
         return date.getFullYear() + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
 }
 
-// 날짜 표시 형식 변경 ( 인터넷 복붙입니다. )
+
 // ****************************************************************************************** //
 
 
