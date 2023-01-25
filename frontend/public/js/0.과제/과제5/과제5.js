@@ -349,6 +349,7 @@ function totalOrder(){
 		html += `<td> ${ count } </td>
 				<td class="test${i}"> ${ parseInt(count*burgerList[i].price).toLocaleString() } </td>`
 		
+		// let rankData = document.querySelector('.test'+ i ).value
 		let rank = 1;
 		
 		
@@ -360,30 +361,79 @@ function totalOrder(){
 		})
 		html += `<td> ${ rank } </td>
 					</tr>`	
-		
-		
-		
-		
-		
-		
-	
-	
-	
-	/*rankArray.forEach( (o)=>{
-		
-		rank = 1
-								
-		rankArray.forEach( (o2)=>{
-			if( o < o2 ){ rank++ }
-			console.log('비교 : ' + o < o2)
-			
-		}) 
-	})*/
-	
-	
+
 	}
 	
 	
+	
+	document.querySelector('.admin_total_list').innerHTML = html
+}
+
+
+
+
+// ############################################################################################################################# //
+// ############################################################################################################################# //
+// ############################################################################################################################# //
+
+
+
+// 오더리스트안에 버거네임이 버거리스트의 네임과일치하며 해당 버거의 인덱스 indexOf'
+
+
+
+/*function orderCountCheck(){
+	
+	let productName = []
+	let totalprice = 0;
+	let totalrank = 1;
+	let burgercount = 1;
+	let bgNameCheck = {
+		name: productName,
+		count: burgercount,
+		price: totalprice,
+		rank: totalrank
+	}
+	
+	for( let i=0 ; i<orderList.length ; i++ ){
+		
+		for( let j=0 ; j<orderList[i].items.length; j++ ){
+			bgNameCheck = orderList[i].items[j].name
+			console.log( orderList[i].items[j].name )
+			if( productName.includes( bgNameCheck.name ) ){ burgercount++ }
+			else( bgNameCheck.name = productName ) 
+			console.log( productName )
+			console.log( burgercount )
+			console.log( bgNameCheck )
+			console.log( bgNameCheck )
+		}
+	}
+}*/
+
+
+
+// let 새로운배열 = cartList.map( (o)=>{ return o; } )
+/*for( let j=0 ; j<orderList[i].items.length ; j++ ){
+			oName[j] += orderList[i].items[j].name
+		}*/
+
+
+/*function rankCheck(){
+	console.log( '함수 돌기 전 : ' + rank )
+	rankArray.forEach( (o)=>{
+		
+		rank = 1
+		rankArray.forEach( (o2)=>{
+			if( o < o2 ){ rank++ }
+			
+		})
+	  
+	})
+	return rank;
+}*/
+
+
+
 		
 	
 	
@@ -451,63 +501,6 @@ function totalOrder(){
 
 
 	console.log ( orderCountCheck() )*/
-	
-	document.querySelector('.admin_total_list').innerHTML = html
-}
-
-// 오더리스트안에 버거네임이 버거리스트의 네임과일치하며 해당 버거의 인덱스 indexOf'
-
-
-
-/*function orderCountCheck(){
-	
-	let productName = []
-	let totalprice = 0;
-	let totalrank = 1;
-	let burgercount = 1;
-	let bgNameCheck = {
-		name: productName,
-		count: burgercount,
-		price: totalprice,
-		rank: totalrank
-	}
-	
-	for( let i=0 ; i<orderList.length ; i++ ){
-		
-		for( let j=0 ; j<orderList[i].items.length; j++ ){
-			bgNameCheck = orderList[i].items[j].name
-			console.log( orderList[i].items[j].name )
-			if( productName.includes( bgNameCheck.name ) ){ burgercount++ }
-			else( bgNameCheck.name = productName ) 
-			console.log( productName )
-			console.log( burgercount )
-			console.log( bgNameCheck )
-			console.log( bgNameCheck )
-		}
-	}
-}*/
-
-
-
-// let 새로운배열 = cartList.map( (o)=>{ return o; } )
-/*for( let j=0 ; j<orderList[i].items.length ; j++ ){
-			oName[j] += orderList[i].items[j].name
-		}*/
-
-
-/*function rankCheck(){
-	console.log( '함수 돌기 전 : ' + rank )
-	rankArray.forEach( (o)=>{
-		
-		rank = 1
-		rankArray.forEach( (o2)=>{
-			if( o < o2 ){ rank++ }
-			
-		})
-	  
-	})
-	return rank;
-}*/
 
 
 
