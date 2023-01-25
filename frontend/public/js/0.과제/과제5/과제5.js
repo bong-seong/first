@@ -350,12 +350,13 @@ function totalOrder(){
 				<td class="test${i}"> ${ parseInt(count*burgerList[i].price).toLocaleString() } </td>`
 		
 		
-		lank = 1
 		rankCheck()
+		html += `<td> ${ i } </td>
+					</tr>`	
 		
 		
-		html += `<td> ${ rank } </td>
-				</tr>`
+		
+		
 		
 		
 	
@@ -488,18 +489,15 @@ function totalOrder(){
 
 
 function rankCheck(){
-
-	rank = 1
-
-	rankArray.forEach( (o)=>{		
+	console.log( '함수 돌기 전 : ' + rank )
+	rankArray.forEach( (o)=>{
 		
-		
-				
+		rank = 1
 		rankArray.forEach( (o2)=>{
 			if( o < o2 ){ rank++ }
-			return rank;
+			
 		})
-		return rank;  
+	  
 	})
 	return rank;
 }
