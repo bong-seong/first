@@ -12,7 +12,9 @@ let burgerList = [
 
 
 let cartList = [] // 카트 목록
-let orderList = [] 
+let orderList = []
+let rankArray = []
+let rank = 1;
  
 
 categoryPrint();		// 카테고리 호출 함수를 호출
@@ -118,7 +120,7 @@ function order(){
 		let order = { 
 			no : no,
 			items : 새로운배열,		// 카트배열 ---> 새로운배열 
-			time : dateFormat(today), 	// new Date() : 현재 날짜/시간 호출 함수 
+			time : new Date(), 	// new Date() : 현재 날짜/시간 호출 함수 
 			state : false,		// true : 일단 주문 // false : 주문 전 
 			complete : 0,		// 아직 주문 완료 되기 전
 			price : total
@@ -268,13 +270,23 @@ function orderContol(){
 					<th> 주문번호 </th> <th> 버거이름 </th> 
 					<th> 상태 </th> <th> 요청완료일 </th> <th> 비고 </th>
 				</tr>`
+				
+	
 	for( let i=0 ; i<orderList.length ; i++ ){
+		
+		let orderTime = orderList[i].time.getFullYear() + '-' +
+						(orderList[i].time.getMonth() + 1) + '-' +
+						orderList[i].time.getDate() + ' ' +
+						orderList[i].time.getHours() + ':' +
+						orderList[i].time.getMinutes() + ':' +
+						orderList[i].time.getSeconds()
+		
 		for( let j=0 ; j<orderList[i].items.length ; j++ ){
 			html += `<tr>
 						<td> ${orderList[i].no} </td>
 						<td> ${orderList[i].items[j].name} </td>		 
 						<td> ${orderList[i].state ? '주문완료' : '주문요청' } </td> 
-						<td> ${orderList[i].state ? orderList[i].time : '' } </td> 
+						<td> ${orderList[i].state ? orderTime : '' } </td> 
 						<td> <button type="button" onclick="orderComplet(${i})"> 주문완료 </button> </td>
 					</tr>`
 		}
@@ -302,13 +314,13 @@ function totalOrder(){
 					<th> 판매수량 </th> <th> 매출액 </th> <th> 순위 </th>
 				</tr>`
 	let count = 0;
-	let rankArray = []
-	let rank = 1
+	
 	
 	for( let i=0 ; i<burgerList.length ; i++ ){
 		
 		count = 0
-		rank = 1
+		
+		
 		
 		html += `<tr>
 					<td> ${ i+1 } </td> 
@@ -327,16 +339,25 @@ function totalOrder(){
 			}
 		}	
 		
-		rankArray.forEach( (o, i)=>{
+		/*rankArray.forEach( (o, i)=>{
 			rankArray.forEach( (o2)=>{
 				if( o < o2 ){ rank++ }
 			})
-		})	
+		})*/
 		
+		// 30000, 57000, 14000
 		html += `<td> ${ count } </td>
-				<td> ${ parseInt(count*burgerList[i].price).toLocaleString() } 원 </td>
-				<td> ${ rank } </td>
-			</tr>`	
+				<td class="test${i}"> ${ parseInt(count*burgerList[i].price).toLocaleString() } </td>`
+		
+		
+		lank = 1
+		rankCheck()
+		
+		
+		html += `<td> ${ rank } </td>
+				</tr>`
+		
+		
 	
 	
 	
@@ -466,30 +487,23 @@ function totalOrder(){
 		}*/
 
 
+function rankCheck(){
 
-// ****************************************************************************************** //
-// 날짜 표시 형식 변경 ( 인터넷 복붙입니다. )
+	rank = 1
 
-let today = new Date();
-
-function dateFormat(date) {
-        let month = date.getMonth() + 1;
-        let day = date.getDate();
-        let hour = date.getHours();
-        let minute = date.getMinutes();
-        let second = date.getSeconds();
-
-        month = month >= 10 ? month : '0' + month;
-        day = day >= 10 ? day : '0' + day;
-        hour = hour >= 10 ? hour : '0' + hour;
-        minute = minute >= 10 ? minute : '0' + minute;
-        second = second >= 10 ? second : '0' + second;
-
-        return date.getFullYear() + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+	rankArray.forEach( (o)=>{		
+		
+		
+				
+		rankArray.forEach( (o2)=>{
+			if( o < o2 ){ rank++ }
+			return rank;
+		})
+		return rank;  
+	})
+	return rank;
 }
 
-
-// ****************************************************************************************** //
 
 
 
