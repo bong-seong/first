@@ -14,7 +14,7 @@ let burgerList = [
 let cartList = [] // 카트 목록
 let orderList = []
 let rankArray = []
-let rank = 1;
+
  
 
 categoryPrint();		// 카테고리 호출 함수를 호출
@@ -330,11 +330,11 @@ function totalOrder(){
 				if( orderList[j].items[k].name == burgerList[i].name ){ 
 					count++
 				}
-				console.log( count*burgerList[i].price )
-				console.log(count)
-				console.log(orderList[j].items[k].name)
-				console.log(burgerList[i].name)
-				console.log( rankArray )
+				//console.log( count*burgerList[i].price )
+				//console.log(count)
+				//console.log(orderList[j].items[k].name)
+				//console.log(burgerList[i].name)
+				//console.log( rankArray )
 				rankArray.splice( i , 1 , count*burgerList[i].price )
 			}
 		}	
@@ -349,9 +349,16 @@ function totalOrder(){
 		html += `<td> ${ count } </td>
 				<td class="test${i}"> ${ parseInt(count*burgerList[i].price).toLocaleString() } </td>`
 		
+		let rank = 1;
 		
-		rankCheck()
-		html += `<td> ${ i } </td>
+		
+		rankArray.forEach( (o)=>{
+			
+			if( rankArray[i] > o ){ rank ++ }
+			console.log( o )
+			
+		})
+		html += `<td> ${ rank } </td>
 					</tr>`	
 		
 		
@@ -488,7 +495,7 @@ function totalOrder(){
 		}*/
 
 
-function rankCheck(){
+/*function rankCheck(){
 	console.log( '함수 돌기 전 : ' + rank )
 	rankArray.forEach( (o)=>{
 		
@@ -500,7 +507,7 @@ function rankCheck(){
 	  
 	})
 	return rank;
-}
+}*/
 
 
 
