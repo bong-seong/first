@@ -347,21 +347,9 @@ function totalOrder(){
 		
 		// 30000, 57000, 14000
 		html += `<td> ${ count } </td>
-				<td class="test${i}"> ${ parseInt(count*burgerList[i].price).toLocaleString() } </td>`
-		
-		// let rankData = document.querySelector('.test'+ i ).value
-		let rank = 1;
-		
-		
-		rankArray.forEach( (o)=>{
-			
-			if( rankArray[i] > o ){ rank ++ }
-			console.log( o )
-			
-		})
-		html += `<td> ${ rank } </td>
-					</tr>`	
-
+					<td class="test${i}"> ${ parseInt(count*burgerList[i].price).toLocaleString() } </td>
+					<td> ${ rankCheck(i) } </td>
+				</tr>`	
 	}
 	
 	
@@ -418,19 +406,23 @@ function totalOrder(){
 		}*/
 
 
-/*function rankCheck(){
-	console.log( '함수 돌기 전 : ' + rank )
+function rankCheck( index ){
+	
+	let rank = 1
+	
 	rankArray.forEach( (o)=>{
+	
 		
-		rank = 1
+		
 		rankArray.forEach( (o2)=>{
-			if( o < o2 ){ rank++ }
+			if( o > o2 ){ rank++ }
 			
 		})
 	  
 	})
+	
 	return rank;
-}*/
+}
 
 
 

@@ -255,7 +255,6 @@ function totalBurger(){
 
 
 // 삭제버튼 함수
-
 function burgerDel( i ){
 	burgerList.splice( i , 1 )
 	totalBurger()

@@ -7,6 +7,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* 기본값 */
 *{ font-family: '맑은 고딕'; color: black; margin: 0px; padding: 0px; }
 
@@ -36,6 +43,86 @@
 
 .h_topmenu{ width: 100%; display: flex; justify-content: flex-end; font-size: 10px; }
 .h_bottommenu{ width: 100%; display: flex; justify-content: space-between; font-size: 15px; }
+
+/* ---------------------------------------------------------------- */
+
+.itembox{ display: flex; flex-wrap: wrap; margin: 3%;}
+
+.box_title{ 
+	text-align: center;
+	font-family: 'RixInooAriDuriR' ;
+	padding-top: 10%;
+	padding-bottom: 1%;
+	border-bottom: solid 2px #999999;
+	width: 20%;
+	margin: 0 auto; 
+}
+
+/* 서로 다른 사이즈[디바이스] 마다 css 다르게 설정 -> 미디어쿼리 */
+	/* @media( 조건 ){ 참일경우 css } */
+@media( max-width : 1000px ){ .item{ width: 45% !important; margin: 2% !important; } }
+
+@media( max-width : 500px ){ .item{ width: 90% !important; margin: 2% !important; } }
+
+/* 1200px 이상 기준 */
+.item{ width: 30%;margin: 5% 1%; }
+.item img{ 
+	width: 100%;
+	height: 200px;    /* 상위 요소의 크기 백분율 */ 
+}
+.item :hover{ /* 해당 요소에 마우스를 올렸을때 */
+	opacity: 0.8; /* 투명도 1:100% */
+}
+
+.item_title{
+	font-size: 15px;
+	margin: 1% 0%;
+}
+
+.item_size{
+	font-size: 13px;
+	color: #999999;
+	border-bottom: solid 1px #999999; 
+	padding-bottom: 10%;
+}
+
+.item_price{
+	text-decoration: line-through;
+	font-size: 14px;
+	color: #999999;
+	margin-top: 5%;
+}
+
+.item_sale{
+	font-family: 'Happiness-Sans-Title' ;
+	font-size: 17px;	
+}
+
+.item_discount{
+	color: red;
+	font-size: 17px;
+	font-family: 'Happiness-Sans-Title' ;
+}
+
+.item_bottom{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 5%;
+}
+
+.item_review{
+	font-size: 12px;
+	color: gray;
+}
+
+
+
+
+
+
+
+
 
 
 
