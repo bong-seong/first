@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'establishRetrosansOTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/establishRetrosansOTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.wrap{
+	width: 1000px;
+	height: 600px;
+	margin: 0 auto;
+	position: relative; 
+	background-image: url("img/gameback.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+
+.status{ 
+	width: 100%; height: 150px; 
+	background-color: black; opacity: 0.7;
+	display: flex; 
+	position: relative;
+}
+
+.u_hp_text{
+	font-family: 'establishRetrosansOTF';
+	color: white;
+	position: absolute; top: 70px; left: 80px;
+	z-index: 20;
+}
+
+.m_hp_text{
+	font-family: 'establishRetrosansOTF';
+	color: white;
+	position: absolute; top: 70px; right: 80px;
+	z-index: 20;
+}
+
+
+.u_hpbar{
+	width: 200px;
+	background-color: red;
+	height: 30px;
+	margin: 5%;
+	position: absolute; top: 40px; left: 10px;
+	border: solid 3px white;
+	border-radius: 10px;
+	z-index: 10;
+}
+
+.m_hpbar{
+	width: 100px;
+	background-color: red;
+	height: 30px;
+	margin: 5%;
+	position: absolute; top: 40px; right: 10px;
+	border: solid 3px white;
+	border-radius: 10px;
+	z-index: 10;
+}
+
+.u_hpbar_back{
+	width: 200px;
+	background-color: white;
+	height: 30px;
+	margin: 5%;
+	position: absolute; top: 40px; left: 10px;
+	border: solid 3px white;
+	border-radius: 10px;
+	z-index: 1;
+}
+.m_hpbar_back{
+	width: 100px;
+	background-color: white;
+	height: 30px;
+	margin: 5%;
+	position: absolute; top: 40px; right: 10px;
+	border: solid 3px white;
+	border-radius: 10px;
+	z-index: 1;
+}
+
+
+.userbox{
+	width: 100px;
+	height: 100px;
+	position: absolute; /* 절대경로 : 상위 요소가 relative 인 요소 */ 
+	background-image: url("img/캐릭터1.png");
+	background-size: 85%;
+	background-repeat: no-repeat;
+	top: 335px;  left: 10px;
+	transition: all 0.1s;
+}
+
+.monbox{
+	width: 100px; height: 100px; position: absolute;
+	left: 900px; top: 340px;
+	background-repeat: no-repeat;
+	background-image: url("img/스포아.gif");
+	background-size: 100%;
+	
+	/* 애니메이션 이동 효과 */
+	transition: all 0.5s;
+}
+
+
+.totallog{ display: flex; justify-content: space-between; padding: 10px 20px; }
+.logbox , .logbox2 { 
+	color: white; font-weight: bold;
+	text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+
+
+
+.gameover{ 
+	width: 1000px;
+	height: 600px;
+	background-color: black;
+	opacity: 0.9;
+	position: absolute; top: 0px; left: 0px;
+	font-family: 'establishRetrosansOTF';
+	display: none;
+}
+.gameover a , .gameclear a{ 
+	text-decoration: none; color: white;
+	position: absolute;
+	top: 330px; left: 470px;
+}
+.gameover_text{ 
+	font-size: 50px; color: white; position: absolute;
+	top: 250px; left: 330px;
+}
+
+.gameclear{
+	width: 1000px;
+	height: 600px;
+	background-color: black;
+	opacity: 0.9;
+	position: absolute; top: 0px; left: 0px;
+	font-family: 'establishRetrosansOTF';
+	display: none;
+}
+
+
+.gameclear_text{
+	font-size: 50px; color: white; position: absolute;
+	top: 250px; left: 310px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
