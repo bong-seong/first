@@ -10,6 +10,7 @@ let m_hpbar_back = document.querySelector('.m_hpbar_back')
 
 let u_hp_text = document.querySelector('.u_hp_text')
 let m_hp_text = document.querySelector('.m_hp_text')
+let level = document.querySelector('.level')
 
 
 // * userbox [기본/처음] 위치
@@ -36,10 +37,10 @@ let user = {
 	power: 20
 }
 
-let user_HP = user.hp * user.lev ;
+/*let user_HP = user.hp * user.lev ;*/
 
 // js 처음 실행시 렌더링 //
-u_hp_text.innerHTML = `체력 : ${ user_HP }`			// 유저 체력게이지
+u_hp_text.innerHTML = `체력 : ${ user.hp }`			// 유저 체력게이지
 m_hp_text.innerHTML = `체력 : ${ monster[upindex].hp }`	// 몬스터 체력게이지
 logbox.innerHTML = `<div> 캐릭터 좌표 : ${ user.left } </div>`
 logbox2.innerHTML = `<div> 몬스터 좌표 : ${ monster[upindex].left } </div>`
@@ -56,10 +57,10 @@ document.addEventListener( 'keydown' , (e)=>{
 	}else if( key == 39){ // 오른쪽
 		user.left += 10
 		user.left = user.left > 920 ? 920 : user.left ;
-		userbox.style.backgroundImage = `url(img/캐릭터2.png)` // 이동모션이미지
+		userbox.style.backgroundImage = `url(img/${ user.img[1] })` // 이동모션이미지
 		userbox.style.backgroundSize = `85%`
 	}else if( key == 65 ){ // a키 -> 공격
-		userbox.style.backgroundImage = `url(img/캐릭터3.png)` // 공격모션이미지
+		userbox.style.backgroundImage = `url(img/${ user.img[2] })` // 공격모션이미지
 		userbox.style.backgroundSize = `85%`
 		// * 
 		if( mon_moving() - user.left < 150 && mon_moving() - user.left > 0 ){ 
@@ -79,7 +80,7 @@ document.addEventListener( 'keydown' , (e)=>{
 
 // 2. 문서안에서 키 떼었을때 이벤트
 document.addEventListener( 'keyup' , (e)=>{
-	userbox.style.backgroundImage = `url(img/캐릭터1.png)`
+	userbox.style.backgroundImage = `url(img/${ user.img[0] })`
 	userbox.style.backgroundSize = `85%`
 })
 
@@ -108,7 +109,7 @@ function mon_moving(){
 	userHit()
 	
 	
-	if( monster[upindex].hp < 0){ 
+	if( monster[upindex].hp <= 0){ 
 		
 		upindex++
 		
@@ -130,7 +131,7 @@ function mon_moving(){
 }
 
 function userPower(){
-	let attack = parseInt( Math.random()*30+10)
+	let attack = user.power * user.lev
 	return attack
 }
 
@@ -169,7 +170,9 @@ function statusPrint(){
 	m_hpbar.style.width = `${ monster[upindex].hp }px`
 	m_hpbar_back.style.width = `${ monster[upindex].maxhp }px`
 			
-	monbox.style.backgroundImage = `url("img/${monster[upindex].m_img}")`	
+	monbox.style.backgroundImage = `url("img/${monster[upindex].m_img}")`
+	
+	level.innerHTML = `LEVEL : ${ user.lev }`
 
 }
 

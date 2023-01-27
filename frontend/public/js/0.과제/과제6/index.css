@@ -40,6 +40,12 @@
 	z-index: 20;
 }
 
+.level{ 
+	color: white;
+	position: absolute;
+	top: 20px; left: 80px; 
+	font-family: 'establishRetrosansOTF';
+}
 
 .u_hpbar{
 	width: 200px;
