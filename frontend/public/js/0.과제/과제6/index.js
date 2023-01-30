@@ -25,7 +25,7 @@ let monster = [
 
 let upindex = 0;
 
-let c_img = [ '캐릭터1.png' , '캐릭터2.png' , '캐릭터3.png']
+let c_img = [ '캐릭터1.png' , '캐릭터2.png' , '캐릭터3.png', '캐릭터4.png']
 
 let user = {
 	img: c_img,
@@ -68,6 +68,10 @@ document.addEventListener( 'keydown' , (e)=>{
 			m_hpbar.style.width = `${ monster[upindex].hp }px`
 			m_hp_text.innerHTML = `체력 : ${ monster[upindex].hp }`	// 몬스터 체력게이지
 		}
+	}
+	
+	if( key == 83 ){
+		userbox.style.backgroundImage = `url(img/${ user.img[3] } )` 
 	}
 	
 	
@@ -147,10 +151,13 @@ function userHit(){
 	
 	statusPrint()
 	
+
+	
 	if( hitbox < 50 && hitbox > -50){ 
 		user.hp -= monstPower()
 		u_hpbar.style.width = `${ user.hp }px`
 		u_hp_text.innerHTML = `체력 : ${ user.hp }`
+		
 	}
 	
 	if( user.hp < 0 ){ 
@@ -187,6 +194,9 @@ function levelUp(){
 		user.maxhp = user.lev * user.maxhp
 	}
 }
+
+
+
 
 
 // ############################################################################### //
