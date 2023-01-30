@@ -16,7 +16,7 @@
 
 /* 기본값 */
 *{ font-family: '맑은 고딕'; color: black; margin: 0px; padding: 0px; }
-
+a{ text-decoration: none !important; color: black !important;}
 
 /* 로고 구역 */
 .logobox{
@@ -55,7 +55,7 @@
 	padding-bottom: 1%;
 	border-bottom: solid 2px #999999;
 	width: 20%;
-	margin: 0 auto; 
+	margin: 3% auto; 
 }
 
 /* 서로 다른 사이즈[디바이스] 마다 css 다르게 설정 -> 미디어쿼리 */

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>login : 김성봉 </title>
+	<title>Auto : 김성봉 </title>
 	
 	<!-- 반응형 : 뷰포트 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +13,17 @@
 	<!-- 부트스트랩 : css -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	
+	<!-- 썸머노트 : css -->
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+	
+	<!-- 헤더에서 사용되는 경로 : 절대경로 [ 페이지마다 헤더 사용하는데 페이지마다 상대경로 다름. ] -->
+		<!--
+			서버경로 : 
+				1. http://localhost:8080/프로젝트명/파일명
+				2. http://192.168.17.40:8080/프로젝트명/파일명
+			서버경로 절대경로 표현 [ ip주소 , port 생략 ]
+				1. /프로젝트명[root:최상위경로]/파일명
+		 -->
 </head>
 <body>
 
@@ -61,15 +72,92 @@
 			</div> 
 		</div>
 	</div>
-	
-	
+<!-- 헤더 END -->
+	<div class="container">
+		<h3 class="box_title"> 게시글 작성 </h3>
 		
-	로그인페이지	
+		<form class="writeform" action="#"> <!-- 입력양식 -->
+			<div class="row my-3">
+				<div class="col-md-3">
+					<input class="form-control bwriter" type="text" placeholder="작성자">
+				</div>
+				<div class="col-md-3">
+					<input class="form-control bpassword" type="password" placeholder="비밀번호">
+				</div>
+			</div>
+			
+			<!-- col-md-12 인 경우 생략 -->
+			<input class="form-control my-3 btitle" type="text" placeholder="제목">
+			
+			<!-- 1. 기본 textarea -->		
+			<textarea class="form-control my-3 bcontent" rows="10" cols="" placeholder="내용"></textarea>
+			<!-- 2. 썸머노트 textarea -->
+			<textarea id="summernote" class="form-control my-3" rows="10" cols="" placeholder="내용"></textarea>		
+			
+			
+			<div class="row">
+				<div class="col-md-3">
+					<input class="form-control" type="file">
+				</div>
+			</div>
+			
+			<div class="row col-md-4 offset-md-4">
+				<div class="col-md-4">
+					<button class="form-control" onclick="board_write()" type="button">등록</button>
+				</div>
+				<div class="col-md-4">
+					<button class="form-control" type="reset">다시쓰기</button>
+				</div>
+				<div class="col-md-4">
+					<a href="list.html"> <button class="form-control" type="button">목록보기</button> </a>
+				</div>
+			</div>
+			
+			 
+		</form>
 		
+	</div>
 	
 	
-	<!-- 부트스트랩: js -->
+	
+	
+	
+	
+	<!-- 부트스트랩: js [ body 하단 작성 ] -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
+	
+	<!-- jquery : js api 라이브러리 -->
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	
+	<!-- 썸머노트 : js -->
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	
+	<!-- 썸머노트 : 한글 js -->
+	<script src=" https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
+	
+	<!-- 사용자 정의 스크립트 -->
+	<script src="../js/board/write.js"></script>
 </body>
 </html>
+
+<!--
+	부트스트랩 여백
+		m: margin
+			m-3 : 위,아래,오른쪽,왼쪽
+			my-3 : 위,아래
+			mx-3 : 왼쪽, 오른쪽 
+			mt-3 : 위쪽
+			mb-3 : 아래
+			ms-3 : 왼쪽
+			me-3 : 오른쪽
+		p: padding 
+ -->
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
