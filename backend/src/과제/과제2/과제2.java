@@ -50,46 +50,51 @@ public class 과제2 {
 				}
 				
 			}else if( item == 4 ) {
-				System.out.println("장바구니");
-				System.out.println("-----------------------------");
 				
 				int total = (coke*cokeOrder) + (sprite*spriteOrder) + (fanta*fantaOrder) ;
 				
 				if( cokeOrder == 0 && spriteOrder == 0 && fantaOrder == 0 ) {
 					System.err.println("선택하신 제품이 없습니다.");
 				}else {
+					System.out.println("장바구니");
+					System.out.println("-----------------------------");
 					System.out.println("제품명\t수량\t가격");
-					if( cokeOrder > 0 ) { System.out.println("콜라\t"+ cokeOrder + "\t" + (coke*cokeOrder) ); } 
-					if( spriteOrder > 0 ) { System.out.println("사이다\t"+ spriteOrder + "\t" + (sprite*spriteOrder) ); }
-					if( fantaOrder > 0 ) { System.out.println("환타\t"+ fantaOrder + "\t" + (fanta*spriteOrder) ); }
-		
-					System.out.println("총 가격 : " + total );
-				}
-				System.out.println(" ");
-				System.out.println("결제 하시겠습니까? 1.결제하기 / 2.취소하기");
-				byte paySelect = scanner.nextByte();
-				if( paySelect == 1 ) {
-					System.out.print(" >>> 지불할 금액을 입력해주세요 : ");
-					int pay = scanner.nextInt();
+					if( cokeOrder > 0 ) { System.out.println("콜라\t"+ cokeOrder + "\t" + (coke*cokeOrder) + "원" ); } 
+					if( spriteOrder > 0 ) { System.out.println("사이다\t"+ spriteOrder + "\t" + (sprite*spriteOrder) + "원" ); }
+					if( fantaOrder > 0 ) { System.out.println("환타\t"+ fantaOrder + "\t" + (fanta*spriteOrder) + "원" ); }
+					System.out.println("-----------------------------");
+					System.out.println("총 가격 : " + total + "원");
 					
-					if( total < pay ) {
-						System.out.println( pay + "를 지불하셨습니다.");
-						System.out.println( "거스름 돈 : " + (pay-total) );
-						cokeOrder = 0; spriteOrder = 0; fantaOrder = 0; total = 0;
+					System.out.println(" ");
+					System.out.println("결제 하시겠습니까? 1.결제하기 / 2.취소하기");
+					System.out.print(" >>> ");
+					byte paySelect = scanner.nextByte();
+					if( paySelect == 1 ) {
+						System.out.print(" >>> 지불할 금액을 입력해주세요 : ");
+						int pay = scanner.nextInt();
+						
+						if( total < pay ) {
+							System.err.println( " >>> " + pay + "원을 지불하셨습니다.");
+							System.out.println("-----------------------------");
+							System.out.println( "거스름 돈 : " + (pay-total) + "원" );
+							System.out.println("-----------------------------");
+							cokeOrder = 0; spriteOrder = 0; fantaOrder = 0; total = 0;
+						}else {
+							System.err.println("금액이 부족하여 결제가 취소됩니다.");
+							cokeCount += cokeOrder;
+							spriteCount += spriteOrder;
+							fantaCount += fantaOrder;
+							cokeOrder = 0; spriteOrder = 0; fantaOrder = 0;
+						}
 					}else {
-						System.err.println("금액이 부족하여 결제가 취소됩니다.");
+						System.err.println("결제를 취소하셨습니다.");
 						cokeCount += cokeOrder;
 						spriteCount += spriteOrder;
 						fantaCount += fantaOrder;
 						cokeOrder = 0; spriteOrder = 0; fantaOrder = 0;
 					}
-				}else {
-					System.err.println("결제를 취소하셨습니다.");
-					cokeCount += cokeOrder;
-					spriteCount += spriteOrder;
-					fantaCount += fantaOrder;
-					cokeOrder = 0; spriteOrder = 0; fantaOrder = 0;
 				}
+				
 				
 				
 				
