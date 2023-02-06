@@ -74,7 +74,7 @@ public class 과제2 {
 						int pay = scanner.nextInt();
 						
 						if( total < pay ) {
-							System.err.println( " >>> " + pay + "원을 지불하셨습니다.");
+							System.out.println( " >>> " + pay + "원을 지불하셨습니다.");
 							System.out.println("-----------------------------");
 							System.out.println( "거스름 돈 : " + (pay-total) + "원" );
 							System.out.println("-----------------------------");
