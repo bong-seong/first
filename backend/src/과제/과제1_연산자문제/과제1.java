@@ -103,11 +103,24 @@ public class 과제1 {
 		System.out.println( i11 + "cm 의 표준 체중은 " + (i11-100)*0.9 + "kg 입니다.");
 		*/
 	
+		/*
 		System.out.println("문제14 : 키와 몸무게를 입력받아 BMI 출력하기");
 		System.out.println("키를 입력하세요 : "); int i12 = sc.nextInt();
 		System.out.println("몸무게를 입력하세요 : "); int i13 = sc.nextInt();
 		System.out.println("BMI : " + i13/((i12/100)*(i12/100)) );
-				
+		*/
+		
+		/*
+		System.out.println("문제15 : inch 를 입력받아 cm 로 변환하기");
+		System.out.print("인치를 입력하세요 : ");
+		int i14 = sc.nextInt();
+		System.out.println( i14 + "inch는 " + (i14*2.54) + "cm 입니다.");
+		*/
+		
+		System.out.println("문제16 : 중간고사, 기말고사, 수행평가를 입력받아 반영비율별 계산하여 소수 둘째자리까지 점수 출력하시오");
+		
+		
+		
 		
 	}
 }
