@@ -53,6 +53,10 @@ public class 실행 {
 							if( bookList.get(no).state == true ) { // 입력받은 번호의 도서의 state 값이 true( 대여가능 ) 일 경우 
 								System.err.println( bookList.get(no).name + "을(를) 대여하였습니다.");
 								bookList.get(no).state = false; // 대여중으로 변경
+								
+								Member member = new Member();
+								member.rentList.add(null);
+								
 							}else {
 								System.err.println("[알림] 이미 대여된 도서입니다.");
 							}

@@ -8,7 +8,7 @@ import 과제.과제4.view.Front;
 
 public class Mcontroller {
 		// * DB 대신할 [ 데이터 저장소 (리스트) ] 
-		ArrayList<Member> memberDb = new ArrayList<>();
+		public ArrayList<Member> memberDb = new ArrayList<>();
 		// 1. 회원가입 로직
 		
 		public int signup(String id , String pwd , String confirmpwd , String name , String phone ) {
@@ -66,7 +66,7 @@ public class Mcontroller {
 		
 		// 5. 작성자 찾기
 		public String findWriter( int i ) {
-			return memberDb.get(i).name;
+			return memberDb.get(i).id;
 		}
 		
 		
