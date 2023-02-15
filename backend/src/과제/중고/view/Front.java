@@ -90,7 +90,8 @@ public class Front {
 	
 	// 제품 등록하기 페이지
 	public void reg_page(){
-		System.out.println("등록할 제품명을 입력해주세요 >> ");
+		System.out.println("등록할 제품명을 입력해주세요 >> "); String p_name = scanner.next();
+		System.out.println("");
 		
 	}
 	
