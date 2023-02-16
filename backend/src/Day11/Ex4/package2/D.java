@@ -15,10 +15,11 @@ public class D extends A {
 		this.method();
 		super.method();
 	}
+	/*
 	public void method2() {
 		A a = new A();
 		a.field = "value"; 
 		a.method();
 	}
-	
+	*/
 }
