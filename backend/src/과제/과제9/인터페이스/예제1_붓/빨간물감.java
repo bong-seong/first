@@ -10,7 +10,7 @@ public class 빨간물감 implements 붓 {
 	
 	@Override
 	public void 그리기() {
-		System.out.println("빨간색으로 그림을 그립니다.");
+		System.out.println( RED + "빨간색으로 그림을 그립니다." + RESET );
 	}
 	
 }

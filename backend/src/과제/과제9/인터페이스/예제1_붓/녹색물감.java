@@ -11,7 +11,7 @@ public class 녹색물감 implements 붓 {
 	
 	@Override
 	public void 그리기() {
-		System.out.println("녹색으로 그림을 그립니다.");
+		System.out.println(GREEN + "녹색으로 그림을 그립니다." + RESET );
 	}
 	
 }
