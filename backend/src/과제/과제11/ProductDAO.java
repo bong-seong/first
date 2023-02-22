@@ -22,7 +22,7 @@ public class ProductDAO {
 	private ProductDAO() {
 		
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pd", "root", "1234");
+			conn = DriverManager.getConnection("jdbc:mysql://192.168.17.12:3306/pd", "pd", "1234");
 		}
 		catch( Exception e ) {
 			System.out.println("DB 연결 실패 " + e.getMessage() );
