@@ -209,6 +209,7 @@ public class ProductDAO {
 	
 	
 	// 유저 --------------------------------------------------------------------------------------
+	// 유저가 선택한 제품을 담을 배열 
 	ArrayList<ProductDTO> userList = new ArrayList<>();
 	
 	
