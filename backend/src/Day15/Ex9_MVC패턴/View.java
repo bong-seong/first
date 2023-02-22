@@ -1,5 +1,6 @@
 package Day15.Ex9_MVC패턴;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class View {
@@ -22,8 +23,8 @@ public class View {
 			int ch = scanner.nextInt();
 			if( ch == 1 ) { signup(); }
 			else if( ch == 2 ) { list(); }
-			else if( ch == 3 ) {}
-			else if( ch == 4 ) {}
+			else if( ch == 3 ) { update(); }
+			else if( ch == 4 ) { delete(); }
 		}
 	}
 	
@@ -50,6 +51,68 @@ public class View {
 	
 	public void list() {
 		
+		System.out.println("-------------------------");
+		System.out.println("회원번호\t\t아이디\t\t비밀번호");
+		
+		ArrayList<MemberDTO> result = Controller.getInstance().list();
+		
+		for( int i=0; i<result.size(); i++ ) {
+			System.out.printf("%d\t\t%s\t\t%s\t\t\n" , result.get(i).getMno() , result.get(i).getMid() , result.get(i).getMpw() );
+		}
+		
 	}
 	
+	
+	public void update() {
+		System.out.println("-------------------------");
+		System.out.println("회원번호 : ");
+		int mno = scanner.nextInt();
+		
+		System.out.println("새로운 비밀번호 : ");
+		String mpw = scanner.next();
+		
+		boolean result = Controller.getInstance().update(mno, mpw);
+		
+		if( result ) {
+			System.out.println("수정 성공");
+		}else {
+			System.out.println("수정 실패");
+		}
+	} // update end
+	
+	
+	// 회원 삭제
+	public void delete() {
+		System.out.println("-------------------------");
+		System.out.println("회원번호 : ");
+		int mno = scanner.nextInt();
+		
+		boolean result = Controller.getInstance().delete(mno);
+		
+		if( result ) {
+			System.out.println("회원탈퇴 성공");
+		}else {
+			System.out.println("회원탈퇴 실패");
+		}
+		
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

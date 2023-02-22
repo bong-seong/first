@@ -30,8 +30,24 @@ public class Controller {
 		return result;
 	}
 	
+	
+	
 	public ArrayList<MemberDTO> list() {
-		return null;
+		// 1. 모든 회원을 호출하는 DAO 메소드 호출해서 결과 얻기
+		ArrayList<MemberDTO> result = MemberDAO.getInstance().list();
+		
+		// 2. 결과 반환
+		return result;
+	}
+	
+	
+	public boolean update( int mno , String mpw ) {
+		return MemberDAO.getInstance().update(mno, mpw);
+	}
+	
+	
+	public boolean delete( int mno ) {
+		return MemberDAO.getInstance().delete(mno);
 	}
 	
 }

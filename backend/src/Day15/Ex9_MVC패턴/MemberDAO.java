@@ -30,8 +30,6 @@ public class MemberDAO {
 					"jdbc:mysql://localhost:3306/day15",
 					"root",
 					"1234");
-			System.out.println("DB연결 성공");
-			
 		}
 		catch( Exception e) {
 			System.out.println("연결 실패" + e.getMessage() );
@@ -70,8 +68,104 @@ public class MemberDAO {
 	
 	// 2. 모든 회원 출력 [ 인수 : x , 반환 : ArrayList 여러명회원 [ Member ] 
 	public ArrayList<MemberDTO> list() {
-		return null;
+		
+		ArrayList<MemberDTO> list = new ArrayList<>();
+		
+		// 1. SQL 작성
+		String sql = "select * from member";
+		// 2. 연결된 DB에 작성된 SQL 대입
+		try{
+			ps = conn.prepareStatement(sql);
+		
+			// 3. SQL 조작 [ 매개변수 없으므로 패스 ]
+			
+			// 4. SQL 실행 [ SQL 결과를 rs 인터페이스에 저장 ]
+			rs = ps.executeQuery();	// 검색된 레코드들 존재
+			
+			// 5. SQL 결과
+				// 레코드 -- 자바형태 --> 객체 DTO // 레코드1개 -> DTO 1개 -> 회원 1개
+				while( rs.next() ) { // rs.next() : 다음 레크도르 이동 [ 없으면 false ] // 마지막 레코드까지 무한루프 
+
+					// 레코드 --> 객체화 [ rs.get~~( 필드순서번호 ) ]
+					MemberDTO dto = new MemberDTO( 
+							rs.getInt(1),
+							rs.getString(2),
+							rs.getString(3));
+					// 1개 객체를 --> 리스트 담기 
+					list.add(dto);
+				}
+			
+		}
+		catch( Exception e ) {
+			System.out.println( "DB 오류 : " + e );
+		}
+		
+		
+		
+		return list ;
 	}
+	
+	
+	// 3. 비밀번호 수정 [ 인수 : mno , newmpw  반환 : true or fasle ] 
+	public boolean update( int mno , String mpw ) {
+		
+		// 1. SQL 작성
+		String sql = "update member set mpw = ? where mno = ?";
+		
+		// 2. 연결 DB에 SQL 대입
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			// 3. SQL 조작
+			ps.setString( 1 , mpw ); 
+			ps.setInt( 2 , mno );
+			
+			// 4. SQL 실행
+			ps.executeUpdate(); // insert , update, delete -> executeUpdate();
+								// select -> ps.executeQuery();
+			
+			// 5. SQL 결과
+			return true;
+		}
+		catch (Exception e) {
+			System.out.println("DB 오류 : " + e );
+		}
+		
+		return false;
+	}
+	
+	
+	// 4. 회원탈퇴 [ 인수 : 회원번호 반환 : 성공 , 실패 ]
+	public boolean delete( int mno ) {
+		
+		// 1. SQL 작성
+		String sql = "delete from member where mno = ?";
+		
+		// 2. 연결 DB에 SQL 대입
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			// 3. SQL 조작
+			ps.setInt(1, mno);
+			
+			// 4. SQL 실행
+			ps.executeUpdate();
+			
+			// 5. 결과
+			return true;
+			
+		}
+		catch( Exception e ) {
+			System.out.println("DB 오류 : " + e );
+		}
+		return false;
+	}
+	
+	
+	
+	
+	
+	
 	
 }
 
