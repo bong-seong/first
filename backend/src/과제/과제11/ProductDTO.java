@@ -7,6 +7,7 @@ public class ProductDTO {
 	private String name;
 	private int price;
 	private int inven;
+	private int count;
 	
 	// 2. 생성자
 	public ProductDTO() {}
@@ -22,6 +23,14 @@ public class ProductDTO {
 		this.name = name;
 		this.price = price;
 		this.inven = inven;
+	}
+	
+	public ProductDTO(int seq, String name, int price, int inven , int count) {
+		this.seq = seq;
+		this.name = name;
+		this.price = price;
+		this.inven = inven;
+		this.count = count;
 	}
 
 	
@@ -64,6 +73,14 @@ public class ProductDTO {
 
 	public void setInven(int inven) {
 		this.inven = inven;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	

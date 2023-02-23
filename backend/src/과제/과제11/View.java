@@ -234,6 +234,7 @@ public class View {
 		ArrayList<ProductDTO> user_pd = Controller.getInstance().cart_print();
 		
 		for( int i=0; i<user_pd.size(); i++ ) {
+			
 			System.out.printf("%s\t\t%d\n" ,
 					user_pd.get(i).getName(), user_pd.get(i).getPrice() );
 		}

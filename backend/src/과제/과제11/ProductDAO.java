@@ -243,8 +243,9 @@ public class ProductDAO {
 			rs = ps.executeQuery();
 			
 			rs.next();
+			
 			ProductDTO dto = new ProductDTO(
-					rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
+					rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4) );
 			
 			userList.add(dto);
 			
