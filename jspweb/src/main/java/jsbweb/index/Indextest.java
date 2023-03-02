@@ -26,16 +26,31 @@ public class Indextest extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// 1. HTTP 객체 [ request : JS에게 요청 , respones : JS에게 응답 ]
+			// 1. request.getParameter("매개변수명"); 
+			// 2. respones.getWirter().print( 데이터 );
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
+		String data = request.getParameter("data"); // ajax( data : { "매개변수명" : 데이터 } )
+		System.out.println("JS에게 get방식으로 받은 데이터 : " + data );
+				
+		response.getWriter().print("GET 방식으로 잘받았습니다.");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+
+		
+		String data = request.getParameter("data"); // ajax( data : { "매개변수명" : 데이터 } )
+		System.out.println("JS에게 post방식으로 받은 데이터 : " + data );
+		
+		response.getWriter().print("POST 메소드 방식으로 잘받았습니다.");
+		
 	}
 
 }
