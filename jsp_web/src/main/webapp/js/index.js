@@ -9,8 +9,8 @@ function 예제1(){
 	console.log( data );
 	
 	$.ajax({
-		url : "http://localhost:8080/jsp_web/index.jsp", 		// 통신할 서블릿 주소
-		method : "get", 	// HTTP 메소드
+		url : "http://localhost:8080/jsp_web/Indextest", 		// 통신할 서블릿 주소
+		method : "post", 	// HTTP 메소드
 		data : { "data" : data },		// 데이터 보내기 
 		success : function( result ){
 			console.log( result );
