@@ -13,7 +13,7 @@
 		<!--  <input> 입력 tag class : 식별자 [ id , class , name ] -->
 	data : <input type="text" class="inputdata">
 		<!--  <button> 버튼 tag type="button" onclick="js작성" -->
-	<button type="button" onclick="예제1()"> 예제1 실행 </button>
+	<button type="button" onclick="Ex1()"> 예제1 실행 </button>
 	
 	
 	<!-- 최신 jquery [ js 라이브러리 ] 가져오기 -->

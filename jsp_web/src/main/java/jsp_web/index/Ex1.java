@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jsp_web.model.Dao;
+
 /**
  * Servlet implementation class Indextest
  */
-@WebServlet("/Indextest")
-public class Indextest extends HttpServlet {
+@WebServlet("/Ex1")
+public class Ex1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Indextest() {
+    public Ex1() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -54,6 +56,9 @@ public class Indextest extends HttpServlet {
 		
 		String data = request.getParameter("data"); // ajax( data : { "매개변수명" : 데이터  } )
 		System.out.println(" JS POST방식으로 받은 데이터 : " + data );
+		
+		// 1. DB연동
+		Dao.getInstance();
 		
 		response.getWriter().print(" POST 메소드 방식으로 잘받았습니다.");
 	
