@@ -1,6 +1,8 @@
 package jsp_web.index;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import jsp_web.model.Dao;
 
 /**
- * Servlet implementation class Indextest
+ * Servlet implementation class Ex1
  */
 @WebServlet("/Ex1")
 public class Ex1 extends HttpServlet {
@@ -36,13 +38,15 @@ public class Ex1 extends HttpServlet {
 		
 			// 1. request.getParameter("매개변수명");
 			// 2. response..getWriter().print( 데이터 );
-		request.setCharacterEncoding("UTF-8");
+		
+		// 한글인코딩
 		response.setCharacterEncoding("UTF-8");
-		
-		String data = request.getParameter("data"); // ajax( data : { "매개변수명" : 데이터  } )
-		System.out.println(" JS GET방식으로 받은 데이터 : " + data );
-		
-		response.getWriter().print(" GET 메소드 방식으로 잘받았습니다.");
+		// 1. DAO 실행해서 데이토 호출
+		ArrayList<String> result = Dao.getInstance().getData();
+		// 2. 확인
+		System.out.println("확인 : " + result );
+		// 3. JS 에게 응답 
+		response.getWriter().print( result );
 		
 	}
 
@@ -57,10 +61,10 @@ public class Ex1 extends HttpServlet {
 		String data = request.getParameter("data"); // ajax( data : { "매개변수명" : 데이터  } )
 		System.out.println(" JS POST방식으로 받은 데이터 : " + data );
 		
-		// 1. DB연동
-		Dao.getInstance();
+		// 1. DB연동후 요청된 데이터를 DAO에게 전달 후 결과를 result 에 저장 
+		boolean result = Dao.getInstance().setData(data); 
 		
-		response.getWriter().print(" POST 메소드 방식으로 잘받았습니다.");
+		response.getWriter().print(" POST 메소드 방식으로 잘받았습니다." + result );
 	
 	}
 

@@ -14,9 +14,26 @@ function Ex1(){
 		data : { "data" : data },		// 데이터 보내기 
 		success : function( result ){
 			console.log( result );
+			Ex2();
 		} // 데이터 받기 
 	});
+}
+//
+Ex2(); // 페이지 열리면 
+function Ex2(){
 	
+	$.ajax({
+		url : "http://localhost:8080/jsp_web/Ex1",
+		method : "get",
+		// data : {},
+		success : function( result ){
+			console.log( result );
+			document.querySelector('.ex2box').innerHTML = result;
+		}
+	});
+	
+}
+
 	// JS --> 서블릿 이동
 	// 0. $ : jquery 표현식 [ jquery 라이브러리 필요 ]
 	// 1. ajax 메소드 사용 : $.ajax();
@@ -53,7 +70,7 @@ function Ex1(){
 			} 
 		});
 	*/
-}
+
 
 
 

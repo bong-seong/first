@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class Dao {
 	
@@ -28,6 +29,47 @@ public class Dao {
 		}catch (Exception e) {
 			System.out.println("DB연결 실패 : " + e );
 		}
+	}
+	
+	// 2. SQL 메소드
+	public boolean setData( String data ) {
+		// 1. SQL 작성
+		String sql = "insert into ex1 values ( ? )";
+		
+		// 2. SQL 대입
+		try {
+			
+			ps = con.prepareStatement(sql);
+			ps.setString(1, data);
+			ps.executeUpdate();
+			return true;
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return false; 
+	}
+	
+	// 데이터 둘 호출 [ 1개 : String / 여러개 : ArrayList<String> ]
+	public ArrayList<String> getData(){
+		
+		ArrayList<String> list = new ArrayList<>();
+		
+		String sql = "select * from ex1";
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while( rs.next() ) {
+				list.add( rs.getString( 1 ));
+			}
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return list;
 	}
 	
 }

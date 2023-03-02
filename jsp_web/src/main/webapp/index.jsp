@@ -22,6 +22,10 @@
 	<!-- 사용자정의 JS [ 경로 : /프로젝트명/[webapp폴더생략]폴터/파일명 -->
 	<script src="js/index.js" type="text/javascript"></script>
 	
+	<h3> 예제2 : [ R : 읽기 ] DAO -> 서블릿 [ JAVA ] -> JS -> HTML </h3>
+	<div class="ex2box">
+	</div>
+	
 
 </body>
 </html>
