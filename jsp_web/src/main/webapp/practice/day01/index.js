@@ -9,12 +9,12 @@ function Ex1(){
 	console.log( data );
 	
 	$.ajax({
-		url : "http://localhost:8080/jsp_web/Ex1", 		// 통신할 서블릿 주소
+		url : "/jsp_web/Ex1", 		// 통신할 서블릿 주소
 		method : "post", 	// HTTP 메소드
 		data : { "data" : data },		// 데이터 보내기 
 		success : function( result ){
 			console.log( result );
-			Ex2();
+			Ex2(); Q2();
 		} // 데이터 받기 
 	});
 }
@@ -23,7 +23,7 @@ Ex2(); // 페이지 열리면
 function Ex2(){
 	
 	$.ajax({
-		url : "http://localhost:8080/jsp_web/Ex1",
+		url : "/jsp_web/Ex1",
 		method : "get",
 		// data : {},
 		success : function( result ){
@@ -33,6 +33,38 @@ function Ex2(){
 	});
 	
 }
+
+
+
+function Q1(){
+	
+	let data = document.querySelector('.savedata').value;
+	
+	$.ajax({
+		url : "/jsp_web/Q1",
+		method : "post",
+		data : { "Q1" : data },
+		success : function( result ){
+			console.log( "과제1 : " + result );
+			Q2(); Ex2();
+		}
+	});
+	
+}
+
+Q2();
+function Q2(){
+	
+	$.ajax({
+		url : "/jsp_web/Ex1",
+		method : "get",
+		success : function( result ) {
+			document.querySelector('.q1box').innerHTML = result;
+		}
+	});
+	
+}
+
 
 	// JS --> 서블릿 이동
 	// 0. $ : jquery 표현식 [ jquery 라이브러리 필요 ]
