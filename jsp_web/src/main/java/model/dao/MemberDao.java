@@ -82,4 +82,46 @@ public class MemberDao extends Dao {
 	}
 	
 	
+	// 4. 로그인 
+	public boolean login( String mid , String mpwd ) {
+		// 아이디 비밀번호 검증 
+		String sql = "select * from member where mid = ? and mpwd = ?";
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, mid);
+			ps.setString(2, mpwd);
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next() ) { return true ;}
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return false;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

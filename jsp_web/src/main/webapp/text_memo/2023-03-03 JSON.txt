@@ -1,0 +1,31 @@
+1. document.querySelector(' ').value				// 일반
+2. document.querySelector('input[name=" ":checked').value	// 라디오버튼
+3. document.querySelector(' ).checked				// 체크박스
+4. JS 객체
+	let 객체명 = { 필드명 : 데이터 , 필드명 : 데이터 , 필드명 : 데이터 }
+5.AJAX객체
+	1. HTML에 JQUERY CDN 추가
+		<script src="http://code.jquery.com/jquery-lastest.min.js"></script>
+	2. 원형
+		$.ajax( { 속성명 : 데이터 , 속성명 : 데이터 , 속성명 데이터 } )
+	3. 속성
+		1. 통신할 서블릿 주소 		url:"/프로젝트명/서블릿주소"
+		2. 통신할 방식 선택 		method: " " 			post vs get
+		3. 보낼 데이터			data: ,
+		4. 받을 데이터 			syccess : function( result ) { }
+6. 서블릿 객체
+	1. request : 요청객체		[ JS에게 데이터 요청 --> ajax data 속성 참고 ]
+		메소드
+		1. request.setCharacterEncoding("UTF-8"); 	: 요청시 데이터를 한글로 인코딩
+		2. request.getParameter("매개변수명");		: 해당 변수명의 데이터 호출 [ * 무조건 String 반환 ]
+	2. response : 응답 객체		[ JS에게 데이터 응답 --> success : function( result ) 참고 ]
+		메소드
+		1. response.setCharacterEncoding("UTF-8");	: 응답시 데이터를 한글로 인코딩
+		2. response.getWriter().print("보낼데이터")	: 응답할 데이터 [ * 무조건 String 보냄 ]
+
+7. JAVA [ Object ] : DTO/ArrayList --------> JS [ Object ] : JSON
+	1. 라이브러리 3개 [ jackson-databind-xx , jackson-core-xx , jackson-annotations-xx ] 추가
+	2. ObjectMapper 객체 생성 [ jackson 라이브러리에서 제공 ]
+		ObjectMapper objectMapper = new ObjectMapper();
+	3. objectMapper.writerValueAsString( 자바객체 ); ----> 자바객체를 JSON 형식의 문자열 반환
+		String jsonArray = objectMapper.writeValueAsString( JAVA리스트 );

@@ -1,0 +1,33 @@
+Servlet : 자바 웹 개발을 위한 클래스 
+	1. Mapping : 해당 클래스를 연결해주는 URL
+		해당 URL ---> 클래스 연결
+	2. URL : 네트워크 상에서 자원이 어디있는지 알려주기 위한 규악 [ 집 주소 ]
+	3. 자원
+		1. JSP : [자동]
+			- 프로젝트 내 webapp 폴더 
+			ip주소:포트번호/프로젝트명/(폴더)/파일명.jsp
+
+		2. Servlet : [ URL 정의 수동 - 주소만들기 ]
+			ip주소 : 포트번호 / 프로젝트명 / 서블릿주소
+			@WebServlet("/Ex3")
+	
+HTTP [ HyperText Transfer Protocol ]
+	1. 주로 HTML 주고 받는데 사용 [ HTML (JS/CSS)  ]
+	2. 클라이언트[유저] 와 서버 [ 문서제공자 ] 사이의 Request / Response
+		1. 메소드
+		[C]		[R]		[U]		[D]
+		POST=저장 , 	GET=요청 , 	PUT=업데이트 , 	DELETE=삭제
+	3. 서블릿내 내장 객체 [ HTTP 기반 만들어진 클래스 ]
+		1. request 객체
+			request.getParameter
+		2. response 객체
+			response.getWriter.print
+	
+
+			    HTTP(자원위치 : URL)
+	클라이언트[유저]				서버[서버내프로젝트]			개발자PC[개발중인프로젝트
+			<-------HTML(JS/CSS)------->						
+	- JS 사용					- 서블릿
+	- AJAX 사용
+		서블릿 통신
+		<-------------------문자------------------>

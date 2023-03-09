@@ -1,0 +1,26 @@
+<!-- 1. JQUERY( ajax 사용하기 위해 ) -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+$.ajax({
+	url : "",
+	method : "",
+	data : "",
+	contentType : false,
+	processData : false,	
+	succecss : ( r ) => {
+	 
+	}
+})
+
+// * 현재 서버에 배포된 프로젝트내 폴더 경로
+String uploadpath = request.getSession().getServletContext().getRealPath("/member/mimg");
+    	
+MultipartRequest multi = new MultipartRequest(
+	request, 						// 요청방식
+	uploadpath, 					// 첨부파일 가져와서 저장할 서버내 폴더
+	1024*1024*10, 					// 첨부파일 허용 범위 용량 [ 바이트단위 ]
+	"UTF-8",						// 첨부파일 한글 인코딩
+	new DefaultFileRenamePolicy() 			// 동일한 첨부파일명이 있으면 뒤에 숫자 붙여 식별
+);
+	

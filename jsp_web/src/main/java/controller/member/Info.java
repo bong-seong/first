@@ -76,6 +76,7 @@ public class Info extends HttpServlet {
     	
     	boolean result = MemberDao.getInstance().signup(dto);
     	response.getWriter().print(result);
+    		System.out.println( result );
     	
     	// ---------------------- 첨부파일 없을때 -------------------- //
     	/*
