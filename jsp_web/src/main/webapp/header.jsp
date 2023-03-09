@@ -12,8 +12,10 @@
 </head>
 <body>
 
-	<h3> 헤더 입니다. </h3>
 	<div class="header">
+		<div>
+			<a href="/jsp_web/index.jsp"> 홈 </a>
+		</div>
 		<!-- js 들어갈 자리 -->
 	</div>
 	
