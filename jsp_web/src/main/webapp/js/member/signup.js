@@ -124,7 +124,8 @@ function signup(){
 	}
 	if( count != 3 ){ alert('정상적으로 입력되지 않은 데이터가 있습니다.'); return; }
 	
-
+	
+	console.log( 'signup 함수 열림');
 	// 1. [ 첨부파일 있을때 ] html file input 직접적으로 조작 불가능
 		// 1. form 객체 가져오기
 	let signupForm = document.querySelectorAll('.signupForm')[0]; // 첫번째 form 가져오기
@@ -139,7 +140,7 @@ function signup(){
 		// 첨부파일 있을때 추가되는 속성
 		contentType : false,		
 		processData : false,	
-		succecss : (r)=>{
+		success : (r)=>{
 			console.log("가입 응답 : " +  r );
 			if( r == 'true' ){
 				alert('회원가입성공');
@@ -149,6 +150,7 @@ function signup(){
 			}
 		} // success end
 	}) // ajax end 
+	console.log( 'signup 함수 끝');
 }
 
 // true : 매개변수 형식의 문자열타입 [ 기본값 ]

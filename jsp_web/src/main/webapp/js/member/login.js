@@ -15,7 +15,9 @@ function login() {
 		data : {"mid" : mid , "mpwd" : mpwd },
 		success : (r)=>{
 			console.log( '통신' );
-			console.log( r ); 
+			console.log( r );
+			if( r == 'true' ){ location.href="/jsp_web/index.jsp"; }
+			else{ alert('회원정보가 불일치 합니다.') } 
 		}
 	})
 }
