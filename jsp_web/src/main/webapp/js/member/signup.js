@@ -102,8 +102,7 @@ function emailcheck() {
 	}else{
 		idcheckconfirm[2].innerHTML = "이메일 형식으로 입력해주세요";
 		document.querySelector('.authbtn').disabled = true; // 인증 버튼 사용 불가
-	}
-		
+	}	
 }	
 
 
