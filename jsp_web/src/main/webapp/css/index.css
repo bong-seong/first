@@ -1,34 +1,63 @@
 @charset "UTF-8";
 
-/* 공통 */
-a{ text-decoration : none; color : black; }
-*{ padding : 0px; margin : 0px; }
-
-
-/* 헤더 */
-.header{
-	width : 1200px; height : 300px;
-	margin: 0 auto;
-	text-align: right;
-	display: flex;
-	justify-content: space-between;
-	border : solid 1px red ; 
-}
-.home_button{ 
-	width: 20%; height: 50px; 
-	border: solid 1px red ; 
-	text-align: center;
+*{ /* 전체 기본 css */
+	margin: 0px; padding: 0px;
+	list-style-type: none;
+	font-family: 'SUIT-Regular';
 }
 
-.header_menu a { margin-left : 30px; }
+a{ color: black; text-decoration: none; }
+
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
+/* -------------- 헤더 -------------- */
 /* 헤더 로그인 프로필 */
-.hpimg{
+
+.header{
+	display: flex;
+	justify-content: space-around;
+	margin: 20px 0px;
+}
+
+.mainlogo{ width: 10%; }
+.mainlogo img { width: 100%; }
+
+.mainmenu{ 
+	width: 65%;
+	display: flex;
+    justify-content: center;
+    margin: 0px !important;
+    font-family: 'SUIT-Regular';
+    font-size: 25px;
+   	align-items: center;
+}
+.mainmenu li { margin: 0px 10px; }
+
+.submenu{ 
+	width: 25%;
+	font-size: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.submenu a { margin-left: 20px; }
+
+/* 1. 헤더 프로필 드롭다운 버튼 */
+.hpimgbtn{
+	border: none;
+    background-color: transparent;
+}
+.hpimg{ /* 2. 헤더 로그인 프로필 */
 	width: 50px;
 	height: 50px;
 	border: solid 1px #e8e8e8;
-	vertical-align : middle;
-	margin-right : 10px; 
 	border-radius: 50%; /* 둥근모서리 */
+	margin-right: 10px;
 }
+

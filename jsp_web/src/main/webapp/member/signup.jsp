@@ -6,33 +6,55 @@
 <head>
 	<meta charset="UTF-8">
 	<title> JSP 수업 : SIGNUP </title>
+	
+	<link href="/jsp_web/css/signup.css" rel="stylesheet">
+	
 </head>
 
 <body>
 	<%@ include file="/header.jsp" %> <!-- (webapp이하생략) 절대경로 -->
 	
-	
-	<h3> 회원가입 </h3>
-	
-	<form action="" class="signupForm">	
-	
-		아이디 : 		<input type="text" onkeyup="idcheck()" maxlength="30"  name="mid" class="mid">	
-		<span class="idcheckconfirm"></span> <br/>
+	<div class="container"> <!-- bs 박스권 --> 
 		
-		비밀번호 :		<input type="password" onkeyup="pwdcheck()" maxlength="20" name="mpwd" class="mpwd">
-		<span class="idcheckconfirm"></span> <br/>
-		비밀번호 확인 : 	<input type="password" onkeyup="pwdconfirmcheck()" maxlength="20" name="mpwdconfirm" class="mpwdconfirm">
-		<br/>
+		<form action="" class="signupForm">	
 		
-		이메일 : 		<input type="text" onkeyup="emailcheck()" name="memail" class="memail">
-		<span class="idcheckconfirm"></span> <br/>
+			<h3> Community </h3>
+			<p> 환영합니다. 다양한 커뮤니티 플랫폼을 제공합니다. </p>
 		
-		프로필 : 		<input onchange="premimg(this)" type="file" name="mimg" class="mimg">
-		<br/><br/>
-			<img class="premimg" src="/jsp_web/member/mimg/default.png" width="100px;">
-			<br/> 미리보기 <br/>
-		<button type="button" onclick="signup()" > 가입 </button>						
-	</form>
+			<div class="title">아이디</div> 		
+			<input type="text" onkeyup="idcheck()" maxlength="30"  name="mid" class="mid">	
+			<div class="idcheckconfirm"></div>
+			
+			<div class="title">비밀번호</div>
+			<input type="password" onkeyup="pwdcheck()" maxlength="20" name="mpwd" class="mpwd">
+			<div class="title">비밀번호 확인</div>
+			<input type="password" onkeyup="pwdconfirmcheck()" maxlength="20" name="mpwdconfirm" class="mpwdconfirm">
+			<div class="idcheckconfirm"></div>
+			
+			<div class="title">이메일</div>
+			<div class="emailbox">
+				<input type="text" onkeyup="emailcheck()" name="memail" class="memail">
+				<button onclick="getauth()" class="authbtn" type="button" disabled="disabled"> 인증 </button>
+				
+			</div>
+			<!-- 인증코드 입력 구역 -->
+			<div class="authbox">
+				<!-- js 들어가는 자리 -->
+
+			</div>
+			<div class="idcheckconfirm"></div>
+			
+			<div class="title">프로필</div>
+			<div class="pimgbox">
+				<img class="premimg" src="/jsp_web/member/mimg/default.png" width="100px;">
+				<input onchange="premimg(this)" type="file" name="mimg" class="mimg">
+			</div>
+			
+			<button class="signupbtn" type="button" onclick="signup()" > 가입 </button>						
+		</form>
+		
+	</div> <!-- container end -->
+	
 
 
 	

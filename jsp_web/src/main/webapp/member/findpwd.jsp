@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title> JSP 수업 : LOGIN </title>
+	<title> JSP 수업 : FIND PWD </title>
 	
 	<link href="/jsp_web/css/signup.css" rel="stylesheet">
 </head>
@@ -17,22 +17,18 @@
 		
 		<form action="" class="signupForm">	
 		
-			<h3> Login </h3>
-			<p> 환영합니다. 다양한 커뮤니티 플랫폼을 제공합니다. </p>
+			<h3> 내 PWD 찾기 </h3>
+			<p> 계정정보 (비밀번호) 찾기 </p>
 		
 			<div class="title">아이디</div> 		
-			<input type="text" maxlength="30"  name="mid" class="mid">	
+			<input type="text" maxlength="30" name="mid" class="mid">
+		
+			<div class="title">이메일</div> 		
+			<input type="text" maxlength="30" name="memail" class="memail">	
 			
-			<div class="title">비밀번호</div>
-			<input type="password" maxlength="20" name="mpwd" class="mpwd">
 			<div class="idcheckconfirm"></div>
 			
-			<div class="subbtnbox">
-				<a href="/jsp_web/member/findid.jsp">아이디 찾기</a>
-				<a href="/jsp_web/member/findpwd.jsp">비밀번호 찾기</a>
-			</div>
-			
-			<button class="signupbtn" type="button" onclick="login()" > 로그인 </button>
+			<button class="signupbtn" type="button" onclick="findpwd()" > 비밀번호 찾기 </button>
 	</div> <!-- container end -->
 	
 	

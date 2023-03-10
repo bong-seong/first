@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+/* 1. 회원가입 입력 구역 */
+.signupForm{
+ 	width: 30%;
+ 	margin: 50px auto;
+ 	font-size: 15px;
+}
+
+.signupForm h3{
+	text-align: center;
+	font-weight: bold;
+}
+.signupForm p { 
+	text-align: center; margin-bottom: 50px;
+	color: #919191; 
+}
+
+/* 2. 입력 상자 */
+.signupForm input{
+	width: 100%;
+    height: 40px;
+    padding: 5px 20px;
+    border: solid 1px #e8e8e8;
+    border-radius: 8px;
+} 
+
+.title{
+	margin: 20px 0px 5px 0px;
+}
+.idcheckconfirm{
+	margin-top: 5px;
+	margin-bottom: 20px;
+	color: #ff5353;
+	font-size: 13px;
+	padding-left: 10px;
+}
+.emailbox { 
+	display: flex; 
+	align-items: center;
+}
+.emailbox button , .authbox button {
+	width: 20%; height: 42px;
+    background-color: #d5c1cd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-left: 10px;
+}
+
+.authbox{
+	display: flex;
+    align-items: center;
+    margin: 20px 0px 10px 0px;
+}
+
+.timebox{ 
+	width: 30%;
+	margin-left: 15px;
+	text-align: center; 
+}
+
+.pimgbox{
+	display: flex;
+	align-items: center;
+}
+.premimg{ /* 첨부파일 이미지 미리보기 */
+	width: 100px; height: 100px;
+	border: solid 1px #e8e8e8;
+	border-radius: 50%;
+	margin: 20px 30px;
+}
+
+/* 회원가입 버튼 */
+.signupbtn{
+	width: 100%; height: 42px;
+	background-color: #d5c1cd;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	margin: 30px 0px ;
+	font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
