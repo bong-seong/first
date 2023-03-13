@@ -8,7 +8,6 @@
 	<title> JSP 수업 : SIGNUP </title>
 	
 	<link href="/jsp_web/css/signup.css" rel="stylesheet">
-	
 </head>
 
 <body>
@@ -53,11 +52,24 @@
 			<button class="signupbtn" type="button" onclick="signup()" > 가입 </button>						
 		</form>
 		
+		<div class="modal_wrap">
+			<div class="modal_box">
+				<div class="modal_title">
+					<h4> 가입이 완료되었습니다. </h4>
+				</div>
+				<div class="modal_content">
+					<p>회원가입 축하 '100' point 지급완료!</p>
+				</div>
+				<div>
+					<button onclick="closeModalSignup()" type="button" class="close"> 확인 </button>
+				</div>
+			</div>
+		</div>
+		
 	</div> <!-- container end -->
 	
 
 
-	
 	<!-- 2. 사용자 정의 JS ( 위에서부터 아래로 흐르기때문에 사용자정의가 위에있으면 ajax 동작에 이상이 생김 --> 
 	<script src="/jsp_web/js/member/signup.js" type="text/javascript"></script>
 	

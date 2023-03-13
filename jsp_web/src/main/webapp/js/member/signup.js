@@ -150,7 +150,7 @@ function getauth(){
 	document.querySelector('.authbox').innerHTML = html;
 	
 	// 3. 타이머 함수 실행
-	auth = 123456; // 인증 코드 대입 [ 이메일에게 보낸 난수 대입 ]
+	auth = 1234; // 인증 코드 대입 [ 이메일에게 보낸 난수 대입 ]
 	timer = 120; // 인증 시간 대입 
 	settimer();
 	
@@ -254,8 +254,8 @@ function signup(){
 		success : (r)=>{
 			console.log("가입 응답 : " +  r );
 			if( r == 'true' ){
-				alert('회원가입성공');
-				location.href="/jsp_web/index.jsp";
+				openModal();
+				// location.href="/jsp_web/index.jsp";
 			}else{
 				alert('회원가입실패')
 			}
@@ -341,3 +341,8 @@ function signup(){
 		}
 	});
 */
+
+function closeModalSignup(){
+	closeModal();
+	location.href='/jsp_web/member/login.jsp';
+}

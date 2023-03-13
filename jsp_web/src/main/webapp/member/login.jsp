@@ -15,7 +15,7 @@
 	
 	<div class="container"> <!-- bs 박스권 --> 
 		
-		<form action="" class="signupForm">	
+		<form class="signupForm">	
 		
 			<h3> Login </h3>
 			<p> 환영합니다. 다양한 커뮤니티 플랫폼을 제공합니다. </p>
@@ -29,6 +29,7 @@
 			
 			<div class="subbtnbox">
 				<a href="/jsp_web/member/findid.jsp">아이디 찾기</a>
+				<span> | </span>
 				<a href="/jsp_web/member/findpwd.jsp">비밀번호 찾기</a>
 			</div>
 			

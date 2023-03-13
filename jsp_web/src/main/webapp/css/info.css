@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.container{
+	text-align: center;
+}
+.info_box{
+	display: flex;
+}
+.info_text{
+	text-align: left;
+}
+
+.info_text .text_item{
+	margin: 20px 0px;
+}
+
+.modi_button{
+	width: 100px;
+	background-color: #d5c1cd;
+	color: white;
+	border: none;
+	border-radius: 2px;
+}
+
+.cancle{
+	width: 100px;
+	background-color: #737373;
+	color: white;
+	border: none;
+	border-radius: 2px;
+}
