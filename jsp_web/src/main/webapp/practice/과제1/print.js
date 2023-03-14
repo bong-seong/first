@@ -149,7 +149,7 @@ function onclickUpdate(no){
 				if(o.no==no){
 					console.log(o)
 					document.querySelector('.no').innerHTML = `${o.no}`;
-					
+					document.querySelector('.nowimg').src = `/jsp_web/practice/{o.img}`
 					document.querySelector('.firstoption').innerHTML = `${o.type}`;
 					document.querySelector('#name').value = `${o.name}`;
 					document.querySelector('.indate').innerHTML = `${o.indate}`;
