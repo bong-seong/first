@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* { font-family: 'SUIT-Regular'; }
+
 h3{ padding: 0px 30px; }
 
 .reg_wrap{
@@ -42,6 +51,16 @@ h3{ padding: 0px 30px; }
 	height: 40px;
 	color: white;
 	background-color: #979797;
+	border: none;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.reg_btn1{
+	width: 100px;
+	height: 40px;
+	color: white;
+	background-color: #7d6aff;
 	border: none;
 	border-radius: 5px;
 	margin-bottom: 20px;

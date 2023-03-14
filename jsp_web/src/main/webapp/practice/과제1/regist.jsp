@@ -68,7 +68,7 @@
 					</tr>
 					<tr>
 						<td class="button_area" colspan="2">
-							<button class="reg_btn" type="button" onclick="regist()"> 등록 </button>
+							<button class="reg_btn1" type="button" onclick="regist()"> 등록 </button>
 						</td>
 					</tr>
 				</table>
@@ -94,7 +94,7 @@
 						</tr>
 						<tr>
 							<td class="button_area" colspan="2">
-								<button class="reg_btn" type="button" onclick="regist_part()"> 등록 </button>
+								<button class="reg_btn1" type="button" onclick="regist_part()"> 등록 </button>
 							</td>
 						</tr>
 				</table>

@@ -25,19 +25,19 @@ function print( type ){
 			let html = `<tr>
 							<th width="5%"> 번호 </th>
 							<th width="5%"> 사진 </th>
-							<th width="5%"> 이름 </th>
+							<th width="10%"> 이름 </th>
 							<th width="5%"> 직급 </th>
 							<th width="10%"> 고용형태 </th>
 							<th width="15%"> 입사일 </th>
 							<th width="15%"> 퇴사일 </th>
 							<th width="10%"> 퇴사사유 </th>
 							<th width="10%"> 부서 </th>
-							<th width="20%"> 비고 </th>
+							<th width="15%"> 비고 </th>
 						</tr>`
 			r.forEach( (o,i)=>{
 				html +=	`<tr>
-							<th width="10%"> ${o.no} </th>
-							<th width="10%">
+							<th> ${o.no} </th>
+							<th>
 								<img src="/jsp_web/practice/과제1/img/${o.img == null ? 'default.png' : o.img }"> 
 							</th>
 							<th> ${o.name } </th>
@@ -68,12 +68,12 @@ function onclickDelete(no){
 	
 	let html = `
 		정말 삭제하시려면 삭제할 사원번호를 입력해주세요</br>
-		<input type="text" class="deleteNo">
+		<input type="text" class="deleteNo modal_input">
 	`;
 	let htmlbtn = 
 		`
-			<button onclick="onDelete(${no})" type="button">삭제</button> 
-			<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button> 
+			<button onclick="onDelete(${no})" type="button" class="reg_btn1">삭제</button> 
+			<button onclick="closeModal()" class="modal_cencel reg_btn" type="button">닫기</button> 
 		`;
 	
 	document.querySelector('.modal_content').innerHTML = html;
@@ -101,10 +101,10 @@ function onclickUpdate(no){
 					<th width="10%"> 부서 </th>
 				</tr>
 				<tr>
-					<th width="10%"> <div class="no"></div> </th>
-					<th width="10%"> <img alt="" src=""> <input type="file" name="newimg" class="img"> </th>
-					<th width="10%"> <input type="text" id="name" name="name"> </th>
-					<th width="10%"> 
+					<th> <div class="no"></div> </th>
+					<th> <img alt="" src="" class="nowimg"> <input type="file" name="newimg" class="img"> </th>
+					<th> <input type="text" id="name" name="name"> </th>
+					<th> 
 						<select class="type" name="type">
 							<option class="firstoption">고용형태</option>
 							<option>일용직</option>
@@ -112,10 +112,10 @@ function onclickUpdate(no){
 							<option>임원</option>
 						</select> 
 					</th>
-					<th width="10%"> <div class="indate"></div> </th>
-					<th width="10%"> <div class="outdate"></div> </th>
-					<th width="10%"> <div class="outreason"></th>
-					<th width="10%">
+					<th> <div class="indate"></div> </th>
+					<th> <div class="outdate"></div> </th>
+					<th> <div class="outreason"></th>
+					<th>
 						<select name="part" id="part">`
 						
 						$.ajax({
@@ -149,6 +149,7 @@ function onclickUpdate(no){
 				if(o.no==no){
 					console.log(o)
 					document.querySelector('.no').innerHTML = `${o.no}`;
+					
 					document.querySelector('.firstoption').innerHTML = `${o.type}`;
 					document.querySelector('#name').value = `${o.name}`;
 					document.querySelector('.indate').innerHTML = `${o.indate}`;
@@ -161,8 +162,8 @@ function onclickUpdate(no){
 	}) // ajax e
 	let htmlbtn = 
 		`
-			<button onclick="onUpdate(${no})" type="button">수정</button> 
-			<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button> 
+			<button onclick="onUpdate(${no})" type="button" class="reg_btn1">수정</button> 
+			<button onclick="closeModal()" class="modal_cencel reg_btn" type="button">닫기</button> 
 		`;
 	document.querySelector('.modal_content').innerHTML = html;
 	document.querySelector('.modal_btns').innerHTML = htmlbtn;
@@ -194,7 +195,7 @@ function onDelete(no){
 } // onDelete e
 
 // 수정함수
-function onUpdate(no){
+function onUpdate( no ){
 	console.log('onUpdate 함수 s')
 	let updateForm = document.querySelectorAll('.updateForm')[0];
 	console.log(updateForm)
@@ -225,12 +226,12 @@ function onclickLeave(no){
 	
 	let html = `
 		퇴사 사유를 입력해주세요</br>
-		<input type="text" class="leaveReason">
+		<input type="text" class="leaveReason modal_input">
 	`;
 	let htmlbtn = 
 		`
-			<button onclick="onLeave(${no})" type="button">퇴사처리</button> 
-			<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button> 
+			<button onclick="onLeave(${no})" type="button" class="reg_btn1">퇴사처리</button> 
+			<button onclick="closeModal()" class="modal_cencel reg_btn" type="button">닫기</button> 
 		`;
 	
 	document.querySelector('.modal_content').innerHTML = html;
@@ -243,20 +244,19 @@ function onclickLeave(no){
 function onLeave(no){
 	let leavereason = document.querySelector('.leaveReason').value
 	$.ajax({
-			url : "/jsp_web/print",
-			method : "post",
-			data : {"no" : no , "outreason" : leavereason},
-			success : (r)=>{
-				console.log('onLeave 연동성공')
-				console.log(r)
-				if(r=='true'){
-					alert('퇴사처리 되었습니다.')
-					closeModal();
-					print(0);
-				}else{alert('퇴사처리 실패')}
-			}
-		}) //ajax e
-	
+		url : "/jsp_web/print",
+		method : "post",
+		data : {"no" : no , "outreason" : leavereason},
+		success : (r)=>{
+			console.log('onLeave 연동성공')
+			console.log(r)
+			if(r=='true'){
+				alert('퇴사처리 되었습니다.')
+				closeModal();
+				print(0);
+			}else{alert('퇴사처리 실패')}
+		}
+	}) //ajax e
 }
 
 
