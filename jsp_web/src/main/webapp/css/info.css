@@ -2,16 +2,35 @@
 
 .container{
 	text-align: center;
+	width: 1000px;
+	margin: 0 auto;
 }
-.info_box{
-	display: flex;
-}
-.info_text{
+
+.container h3 { 
+	margin: 20px 0px;
 	text-align: left;
 }
 
+.info_box{
+	width: 700px;
+	margin : 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+.info_text_box{
+	text-align: left;
+	width: 70%;
+}
+
+.mimg{ width: 100% !important; }
+.info_img_box{ width: 30%; }
+
 .info_text .text_item{
 	margin: 20px 0px;
+}
+
+.text_item{
+	padding: 20px 20px;
 }
 
 .modi_button{

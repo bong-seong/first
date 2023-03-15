@@ -14,10 +14,10 @@
 	<div class="container">
 		<h3> 회원정보 </h3>
 		<div class="info_box">
-			<div>
+			<div class="info_img_box">
 				<img class="mimg" alt="" src="/jsp_web/member/mimg/default.png">
 			</div>
-			<div class="info_text">
+			<div class="info_text_box">
 				<div class="text_item">
 					<div> 아이디 </div>
 					<div class="mid"></div>

@@ -1,0 +1,71 @@
+- 서블릿 [ Servlet ] : HTTP 기반으로 만들어진 클래스
+
+- HTTP : 하이퍼텍스트 교환 프로토콜 [ ]
+
+	- 메소드
+		1. GET		: http://ip주소:포트번호/프로젝트명/파일명?매개변수=qwe
+				1. <a>
+				2. location.href
+				2. form 
+				3. 웹브라우저 사용하는 주소검색창 
+
+				- 보안 없다 [ URL에 데이터 흔적 남긴다.(캐시기록)
+				- 재접속시 속도 빠름
+
+		2. POST		: http://ip주소:포트번호/프로젝트명/파일명
+				1.form
+				2. ajax({ })
+
+				- 보안 있다 [ URL에 데이터 흔적 남기지 않는다 ]
+				- 회원가입/로그인 [ 개인정보 요청/응답하는 데이터에서 사용 ]
+				- 재접속시에도 새로운 요청/응답
+
+		3. PUT		: GET 메소드와 동일
+
+		4. DELETE 	: GET 메소드와 동일
+	
+	- HTTP 데이터 통신 타입
+		0. Multipart/related	: 기본타입
+		1. x-www-form-urlencode	: 기본 form [ 대용량 불가능 ]
+		2. multipart/form-data 	: 첨부파일 form [ 대용량 가능 ]
+		3. application/json		: json 형식
+
+- 동기식 통신 vs 비동기식 통신
+
+	1. 동기 : 페이지 전환
+		링크 : <a> , localhost.href , form , 웹브라우저 사용하는 주소검색창
+		통신기법 : form 
+
+	2. 비동기 : 페이지 전환 X --->
+		통신기법 : ajax		
+
+- ajax :  jquery( js 라이브러리 )
+
+	1. $.ajax( ) 
+	2. 속성[객체] : { }
+		1. url : "백엔드 서블릿주소",		/프로젝트명/@WebServlet("/member")
+		2. method : "HTTP메소드",
+		3. data : 보낼 데이터의 객체형식 { },				let data = { mid : mid } -> data vs { "mid" : mid }
+		4. async : "동기=false 비동기(기본값)=true"
+		5. contentType : 첨부파일이면 false 아니면 생략
+		6. processData : 첨부파일이면 false 아니면 생략
+		7. success : ( 응답결과변수 ) => { }
+		
+
+- 업로드 없을때
+	1. form 사용 여부 선택
+	2. ajax
+		1. url : "백엔드 서블릿주소",
+		2. method : "HTTP메소드",
+		3. data : 보낼 데이터의 객체형식 { },
+		4. success : ( 응답결과변수 ) => { }
+
+
+- 업로드 있을때
+	1. ajax
+		1. url : "백엔드 서블릿주소",	
+		2. method : "HTTP메소드",
+		3. data : 보낼 데이터의 객체형식 { },			
+		4. contentType : 첨부파일이면 false 아니면 생략
+		5. processData : 첨부파일이면 false 아니면 생략
+		6. success : ( 응답결과변수 ) => { }

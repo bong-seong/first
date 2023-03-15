@@ -1,0 +1,21 @@
+세션 : 웹서버 [ 톰캣 ] 저장소
+	- 각 클라이언트마다 서버에 메모리 할당
+	- 보안 O
+	- 누가 로그인 했는지 대한 로그인 정보
+	- 메모리 효율적으로 쓰자
+
+	1. 세션
+		- request.getSession() : 세션은 Object [ 세션은 모든 타입을 저장 ] 
+		- 누가 로그인했는지 대한 
+		- 호출시 Object---> 형변환 필수
+	
+	2. 사용방법
+	request.getSession					: 세션 객체 호출
+	request.getSession.setAttribute( "key", value ) 		: 세션 객체에 속성[데이터] 추가
+	request.getSession.getAttribute( "key" )		: 세션 객체에 저장된 속성 '키' 호출시 데이터 출력
+	request.getSession().invalidate();			: 모든 세션 객체내 속성[데이터] 지우기[초기화]
+	request.getSession().setAttribute("삭제할키" , null ) 	: 특정 세션 객체내 속성[데이터] 지우기
+쿠키 : 사용자[클라이언트] PC 저장소
+	- 쿠키요청한 사용자PC 메모리 할당
+	- 보안 X
+	- 자동로그인 , 즐겨찾기 등등
