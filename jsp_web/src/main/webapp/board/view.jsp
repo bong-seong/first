@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title> JSP 수업 : 게시물 개별조회 </title>
 </head>
 <body>
 

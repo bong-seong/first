@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.container h3{ margin-top: 100px; margin-bottom: 50px; }
+
+.funcbtn{ display: flex; justify-content: space-between; }
+.pagebox{ 
+	width: 100%;
+	text-align: center; 
+}
+.pagebox button {
+	width: 25px;
+	margin: 10px;
+}
+
+.searchbox{
+	width: 500px;
+	display: flex; 
+	margin: 0 auto;
+	justify-content: center;
+	align-items: center;
+}
+
+.selectbox{
+	margin-right: 10px;
+}
+
+.inputbox{
+	margin-left: 10px;
+	align-items: center;
+}

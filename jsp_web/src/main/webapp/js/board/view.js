@@ -15,7 +15,13 @@ function getBoard(){
 		success : ( r ) => {
 			console.log('getBoard 통신'); console.log( r );
 			
-			document.querySelector('.infobox').innerHTML = `${r.bdate} / ${r.bview} / ${r.bup} / ${r.bdown}`;
+			let html = `${r.bdate} / 
+						${r.bview} / 
+						<button onclick="bIncrease(2)" type="button"> ${r.bup} </button> / 
+						<button onclick="bIncrease(3)" type="button"> ${r.bdown} </button>
+						`
+			
+			document.querySelector('.infobox').innerHTML = html;
 			document.querySelector('.pimgbox').innerHTML = `<img width="5%" src="/jsp_web/member/mimg/${r.mimg == null ? 'default.png' : r.mimg }"> ${r.mid}`;
 			document.querySelector('.btitle').innerHTML = r.btitle;
 			document.querySelector('.bcontent').innerHTML = r.bcontent;
@@ -52,6 +58,29 @@ function bdownload( bfile ){
 	
 	
 } // func end 
+
+
+// 3. 조회수[1] , 좋아요수[2] , 싫어요수[3]
+bIncrease( 1 ) ; // 현재 jsp/js 가 열리는 순간 [ 조회수 증가 ]
+function bIncrease( type ){
+	
+	// 1. 현재 게시물의 번호 [ 증가할 대상 ]
+	let bno = document.querySelector('.bno').innerHTML;
+	console.log( "bno : " + bno );
+	// 2. 
+	$.ajax({
+		url : "/jsp_web/board/view",
+		method : "get",
+		data : { "type" : type , "bno" : bno },
+		success : ( r ) => {
+			console.log( 'bIncrease 통신'); console.log( r );
+			// 새로고침
+			getBoard();
+		}
+		
+	})
+} 
+
 
 /*
 	1. onclick = 스크립트 작성가능
