@@ -61,7 +61,6 @@ public class BoardDto {
 	
 	public BoardDto(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int bup,
 			int bdown, int mno, int cno, String mid , String mimg ) {
-		super();
 		this.bno = bno;
 		this.btitle = btitle;
 		this.bcontent = bcontent;
@@ -76,7 +75,25 @@ public class BoardDto {
 		this.mimg = mimg;
 	}
 	
+	// 5. 업데이트 생성자
+	public BoardDto(int bno, String btitle, String bcontent, String bfile, int cno) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+		this.cno = cno;
+	}
+	
+	
 	// 3. 메소드
+	
+	@Override
+	public String toString() {
+		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bfile=" + bfile
+				+ ", bdate=" + bdate + ", bview=" + bview + ", bup=" + bup + ", bdown=" + bdown + ", mno=" + mno
+				+ ", cno=" + cno + ", mid=" + mid + ", mimg=" + mimg + "]";
+	}
 	
 	public int getBno() {
 		return bno;
@@ -144,13 +161,12 @@ public class BoardDto {
 	public void setMid(String mid) {
 		this.mid = mid;
 	}
-	
-	
-	@Override
-	public String toString() {
-		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bfile=" + bfile
-				+ ", bdate=" + bdate + ", bview=" + bview + ", bup=" + bup + ", bdown=" + bdown + ", mno=" + mno
-				+ ", cno=" + cno + ", mid=" + mid + ", mimg=" + mimg + "]";
+	public String getMimg() {
+		return mimg;
 	}
+	public void setMimg(String mimg) {
+		this.mimg = mimg;
+	}
+	
 	
 }

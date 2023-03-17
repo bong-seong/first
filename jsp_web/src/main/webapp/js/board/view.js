@@ -1,6 +1,5 @@
 console.log( 'view.js 열림' );
 
-getBoard();
 function getBoard(){
 	
 		console.log('getBoard 실행');
@@ -14,7 +13,7 @@ function getBoard(){
 		data : { "type" : 2 , "bno" : bno },
 		success : ( r ) => {
 			console.log('getBoard 통신'); console.log( r );
-			
+			console.log( r.mimg );
 			let html = `${r.bdate} / 
 						${r.bview} / 
 						<button onclick="bIncrease(2)" type="button"> ${r.bup} </button> / 
@@ -32,6 +31,15 @@ function getBoard(){
 				html = `${r.bfile} <button onclick="bdownload( '${r.bfile}' )" type="button"> 다운로드 </button>`
 				document.querySelector('.bfile').innerHTML = html;
 			} 
+			
+			// ----------------------------------------- //
+			// 로그인된 회원과 작성자가 일치하면 수정/삭제 버튼 출력
+			if( memberInfo.mid == r.mid ){
+				html = `<button onclick="bdelete(${bno} , ${r.cno})" type="button"> 삭제 </button>
+						<button onclick="bupdate(${bno})" type="button"> 수정 </button>
+						`
+				document.querySelector('.btnbox').innerHTML = html;
+			}
 			
 			
 		} // success end
@@ -80,6 +88,34 @@ function bIncrease( type ){
 		
 	})
 } 
+
+// 4. 삭제
+function bdelete( bno , cno ){
+	
+	$.ajax({
+		url : "/jsp_web/board/info",
+		method : "delete",
+		data : { "bno" : bno , "type" : 1 },
+		success : ( r ) => {
+			console.log( r );
+			if( r == 'true' ){
+				alert('삭제성공');
+				location.href = "/jsp_web/board/list.jsp?cno="+cno;
+			}else{
+				alert('삭제실패');
+			}
+		} 
+	})
+	
+}
+
+function bupdate( bno ){
+	location.href="/jsp_web/board/update.jsp?bno=" + bno ;
+}
+
+
+
+
 
 
 /*

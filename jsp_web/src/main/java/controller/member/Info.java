@@ -15,6 +15,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import model.dao.MemberDao;
 import model.dto.MemberDto;
+import model.dto.UserListDto;
 
 
 @WebServlet("/member")
@@ -103,14 +104,45 @@ public class Info extends HttpServlet {
     // 2. 로그인 / 회원정보 호출
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<MemberDto> list = MemberDao.getInstance().infoPrint();
+			// 검색처리
+			
+			String key = request.getParameter("key");
+			String keyword = request.getParameter("keyword");
 		
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonArray = mapper.writeValueAsString(list);
+			
+			int page = Integer.parseInt( request.getParameter("page") );			// 호출한 페이지 전달받기
+			int listsize = Integer.parseInt( request.getParameter("listsize") );	// 리스트에 출력할 레코드 수 사이즈 받기 
+			int startrow = (page-1)*listsize;										// 시작 레코드 번호
+			
+			// 1. 토탈사이즈 
+			int totalsize = MemberDao.getInstance().user_count( key , keyword );	// DAO 에게 total count 수 요청 
+			int totaluser = totalsize % listsize == 0 ? totalsize/listsize : totalsize/listsize+1 ; // 총 유저수에따른 페이지수 구하기
+			
+			int btnsize = 5; // 표시할 버튼의 갯수 지정
+			int startbtn = ( (page-1) / btnsize ) * btnsize + 1 ; // 시작 버튼 번호구하기 
+			
+			int endbtn = startbtn + (btnsize-1); // 끝 버튼번호 구하기 
+			
+			if( endbtn > totaluser ) { // 끝 버튼이 총 페이지수를 넘어갈 수 없게 처리
+				endbtn = totaluser;
+			}
+			
+			
+			// Dao 호출하여 MemberDto 구성 
+			ArrayList<MemberDto> list = MemberDao.getInstance().infoPrint( startrow , listsize , key , keyword );
+			
+			// 페이지 , 리스트사이즈 , 버튼 정보 , MemberDto 등 다양한 자료형을 한번에 담기위한 UserListDto 구성 
+			UserListDto dto = new UserListDto(page, listsize, startrow, totalsize, totaluser, btnsize, startbtn, endbtn, list);
+			
+			// 형변환
+			ObjectMapper mapper = new ObjectMapper();
+			String json = mapper.writeValueAsString( dto );
+			
+			// 리턴
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().print( json );
 		
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json");
-		response.getWriter().print( jsonArray );
 		
 	}
 

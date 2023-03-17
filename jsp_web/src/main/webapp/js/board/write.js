@@ -23,6 +23,7 @@ function bwrite(){
 			console.log( 'write ajax 통신'); console.log( r );
 			if( r == 'true' ){
 				alert('글이 등록되었습니다.')
+				location.href = "/jsp_web/board/list.jsp?cno="+document.querySelector('.cno').value;
 			}else{
 				alert('[ 실패 ] 관리자에게 문의하세요')
 			}

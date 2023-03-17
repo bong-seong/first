@@ -56,15 +56,68 @@ public class MemberDao extends Dao {
 	}
 	
 	
+	
+	// * 과제 추가 : 전체 회원 count(*) 구하기
+	public int user_count( String key , String keyword ) {
+		
+		String sql = "";
+		
+		if( key.equals("") && keyword.equals("")  ) { // count 구할때 만약에 검색이 없으면 아래쿼리로 실행
+			
+			sql = "select count(*) from member";
+			
+		}else { // 만약에 검색이 있으면 검색된 카운트를 구하는 쿼리문 실행
+			
+			sql = "select count(*) from member where " + key + " like '%" + keyword + "%' ";
+			
+		}
+		
+		try{
+			
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if ( rs.next() ) { return rs.getInt(1); }
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
+	
+	
+	
+	
 	// 2. 모든 회원정보 호출
-	public ArrayList<MemberDto> infoPrint(){
+	public ArrayList<MemberDto> infoPrint( int startrow , int listsize , String key , String keyword ){
 		
 		ArrayList<MemberDto> list = new ArrayList<>();
 		
-		String sql = "select * from member";
+		// 공통사용을 위해 변수 밖에 선언
+		String sql = "";
+		
+		// 검색처리를 위한 제어문 
+		if( key.equals("") && keyword.equals("") ) { // 만약에 key 값이 공백이고 keyword 값이 공백이면 
+			
+			// 조건 없는 그냥 select 실행
+			sql = "select * from member order by mno limit ? , ?";
+			
+			
+		}else { // key 와 keyword 값이 있으면 
+			
+			// 조건이 추가된 sql 실행
+			sql = "select * from member where " + key + " like '%" + keyword + "%' order by mno limit ? , ?";
+			
+		}
 		
 		try {
 			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, startrow );
+			ps.setInt(2, listsize);
+			
 			rs = ps.executeQuery();
 			while( rs.next() ) {
 				

@@ -31,7 +31,7 @@
 		
 		<!--  -->
 		<form class="writeForm">
-	카테고리 : <select name="cno">
+	카테고리 : <select name="cno" class="cno">
 				<option value="1">공지사항</option>
 				<option value="2">커뮤니티</option>
 				<option value="3">QnA</option>

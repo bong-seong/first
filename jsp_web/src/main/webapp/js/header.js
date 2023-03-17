@@ -10,7 +10,7 @@ function getLogin(){
 		method : "get",
 		data : "get",
 		success : (r)=>{
-
+			console.log( r );
 			memberInfo = r ; // <---- 응답 결과를 전역변수 옮기기 [ 왜?? 다른 함수에서 쓸려고 ]
 			let html = ``; // 1. html 구성
 			

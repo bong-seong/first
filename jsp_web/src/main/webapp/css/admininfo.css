@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.user_list_box{
+	width: 800px;
+	margin: 0 auto;
+}
+
+.user_list_box h3{
+	margin: 50px 0px;
+}
+.info_table{
+	width: 100%;
+}
+.info_table img {
+	width: 50px;
+}
+
+.submenu_box{
+	display: flex;
+	justify-content: space-between;
+	margin: 20px 0px;
+}
+
+.submenu_box button {
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	border: solid 2px #8080ff;
+	color : #8080ff;
+}
+
+.info_page_btn{
+	text-align: center;
+}
+
+.info_page_btn button{
+	width: 30px;
+	margin: 20px 10px;
+}
+
+.user_serach_box{
+	display: flex;
+	justify-content: center;
+}
+
+.search_box , .key {
+	
+	margin: 0px 10px;
+	
+}

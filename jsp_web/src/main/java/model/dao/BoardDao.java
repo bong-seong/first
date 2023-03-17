@@ -108,7 +108,7 @@ public class BoardDao extends Dao {
 						rs.getInt(1), rs.getString(2), rs.getString(3),
 						rs.getString(4), rs.getString(5), rs.getInt(6),
 						rs.getInt(7), rs.getInt(8), rs.getInt(9),
-						rs.getInt(9), rs.getString(11)
+						rs.getInt(10), rs.getString(11)
 				);
 				
 				list.add(dto);
@@ -139,11 +139,13 @@ public class BoardDao extends Dao {
 			if ( rs.next() ) { 
 				
 				BoardDto dto = new BoardDto(
-						rs.getInt(1), rs.getString(2), rs.getString(3),
-						rs.getString(4), rs.getString(5), rs.getInt(6),
+						rs.getInt(1), rs.getString(2), rs.getString(3), 
+						rs.getString(4), rs.getString(5), rs.getInt(6), 
 						rs.getInt(7), rs.getInt(8), rs.getInt(9),
-						rs.getInt(9), rs.getString(11) , rs.getString(12) );
+						rs.getInt(10), rs.getString(11), rs.getString(12) );
+				
 				System.out.println( dto );
+				
 				return dto;
 			}
 		}catch (Exception e) {
@@ -175,6 +177,78 @@ public class BoardDao extends Dao {
 		
 		return false; 
 	}
+	
+	// 5. 삭제
+	
+	public boolean bdelete( int bno ) {
+		
+		String sql = "delete from board where bno = ?";
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, bno);
+			
+			int count = ps.executeUpdate();
+			
+			if(count == 1 ) return true;
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+	
+	// 6. 게시물 수정
+	public boolean bupdate( BoardDto dto ) {
+		
+		System.out.println( "DAO : " + dto );
+		
+		String sql = "update board set btitle = ? , bcontent = ? , bfile = ? , cno = ? where bno = ?";
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, dto.getBtitle() );
+			ps.setString(2, dto.getBcontent() );
+			ps.setString(3, dto.getBfile() );
+			ps.setInt(4, dto.getCno() );
+			ps.setInt(5, dto.getBno() );
+			
+			int count = ps.executeUpdate();
+			
+			if( count > 0 ) { return true; }
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return false ;
+		
+	}
+	
+	
+	public boolean bfiledelete( int bno ) {
+		
+		String sql = "update board set bfile = null where bno = " + bno;
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			
+			int count = ps.executeUpdate();
+			if ( count == 1 ) {
+				return true; 
+			}
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return false;
+	}
+	
 	
 	
 }
