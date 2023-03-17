@@ -79,24 +79,30 @@ function infoPrint( page ){
 	}) // ajax end 
 }
 
+
+// 리스트 사이즈 ( select 선택에 따른 게시물 출력갯수조절 )
 function setListsize(){
 	
-	let listsize = document.querySelector('.listsize').value;
+	let listsize = document.querySelector('.listsize').value; // select value 값 가져오기
 	
+	// 객체 내 listsize 에 값 대입
 	userList_info.listsize = listsize;
-	infoPrint(1);
+	infoPrint(1); // 리스트프린트 랜더링
+	
 }
 
 
+// 검색 함수 
 function user_search(){
 
 	console.log( 'user_search() 실행' );
-	userList_info.key = document.querySelector('.key').value ;
-	userList_info.keyword = document.querySelector('.keyword').value ;
-	infoPrint(1);	
+	userList_info.key = document.querySelector('.key').value ; // 검색함수 동작시 select 박스의 value 값 가져와 객체에 대입 
+	userList_info.keyword = document.querySelector('.keyword').value ; // 함수 동작시 input 에 입력된 값 가져와 객체에 대입 
+	infoPrint(1);	// 재호출
 }
 
 
+// 전체보기 버튼 클릭시
 function alluser(){
 	console.log( 'allboard() 실행' );
 	userList_info.key = ''; 		// 검색 없애기 
