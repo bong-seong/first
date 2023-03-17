@@ -113,7 +113,8 @@ function alluser(){
 }
 
 
-function select_page( page ){
+function select_page( page ) {
+	
 	let selectPage = document.querySelectorAll('.info_page_btn')
 	console.log( selectPage[0] );
 	console.log( page );
