@@ -74,7 +74,9 @@ function infoPrint( page ){
 			
 			
 			document.querySelector('.info_page_btn').innerHTML = html ;
-			document.querySelector('.total_user').innerHTML = `총 멤버 수 : ${r.totalsize}` 
+			document.querySelector('.total_user').innerHTML = `총 멤버 수 : ${r.totalsize}`
+			
+			select_page( page );
 		} // success end
 	}) // ajax end 
 }
@@ -108,6 +110,24 @@ function alluser(){
 	userList_info.key = ''; 		// 검색 없애기 
 	userList_info.keyword = ''; 	// 검색없애기
 	infoPrint(1);			// 재호출
+}
+
+
+function select_page( page ){
+	let selectPage = document.querySelectorAll('.info_page_btn')
+	console.log( selectPage[0] );
+	console.log( page );
+	
+	let selectbutton = selectPage[0].querySelectorAll('button');
+	
+	for( let i=0; i<selectbutton.length; i++ ){
+		
+		if( page == selectbutton[i].innerHTML ){  
+			selectbutton[i].classList.add( 'seletedpage' );
+		}else{
+			selectbutton[i].classList.remove( 'seletedpage' );
+		}
+	}
 }
 
 

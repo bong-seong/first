@@ -34,8 +34,10 @@
 }
 
 .info_page_btn button{
-	width: 30px;
-	margin: 20px 10px;
+	width: 25px;
+	margin: 10px;
+	background-color: transparent;
+	border: none;
 }
 
 .user_serach_box{
@@ -43,8 +45,11 @@
 	justify-content: center;
 }
 
-.search_box , .key {
-	
-	margin: 0px 10px;
-	
+.search_box , .key {	
+	margin: 0px 10px;	
+}
+
+.seletedpage{
+	color : #8080ff;
+	font-weight: bold;
 }

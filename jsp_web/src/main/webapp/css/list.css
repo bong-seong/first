@@ -2,7 +2,7 @@
 
 .container h3{ margin-top: 100px; margin-bottom: 50px; }
 
-.funcbtn{ display: flex; justify-content: space-between; }
+.funcbtn{ display: flex; justify-content: flex-end; }
 .pagebox{ 
 	width: 100%;
 	text-align: center; 
@@ -10,6 +10,8 @@
 .pagebox button {
 	width: 25px;
 	margin: 10px;
+	background-color: transparent;
+	border: none;
 }
 
 .searchbox{
@@ -27,4 +29,44 @@
 .inputbox{
 	margin-left: 10px;
 	align-items: center;
+}
+
+.allboard{
+	background-color: transparent;
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	color : #d5c1cd;
+	align-items: center;
+	border: solid 2px #d5c1cd;
+}
+
+.boardwrite{
+	background-color: transparent;
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	color : #d5c1cd;
+	align-items: center;
+	border: solid 2px #d5c1cd;
+}
+
+.searchcount{
+	margin: 20px 0px;
+}
+
+.listsize{
+	width: 100px;
+	height: 30px;
+}
+
+.optionbox{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.seletedpage{
+	color : #b08ca3;
+	font-weight: bold;
 }

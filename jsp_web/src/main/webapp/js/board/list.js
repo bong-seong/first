@@ -94,6 +94,8 @@ function getBoardList( page ){
 			document.querySelector('.pagebox').innerHTML = html; 
 			// --------------------------------- 게시물수 출력 --------------------------//
 			document.querySelector('.searchcount').innerHTML = `게시물 수 : ${ r.totalsize }`
+			
+			select_page( page );
 			 
 		} // success end 
 		
@@ -132,6 +134,25 @@ function setListsize(){
 	getBoardList(1);
 }
 
+
+// 5.
+function select_page( page ){
+	let selectPage = document.querySelectorAll('.pagebox')
+	console.log( selectPage[0] );
+	console.log( page );
+	
+	let selectbutton = selectPage[0].querySelectorAll('button');
+	
+	for( let i=0; i<selectbutton.length; i++ ){
+		
+		if( page == selectbutton[i].innerHTML ){  
+			selectbutton[i].classList.add( 'seletedpage' );
+		}else{
+			selectbutton[i].classList.remove( 'seletedpage' );
+		}
+		
+	}
+}
 
 
 /*

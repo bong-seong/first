@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title> JSP 수업 : 게시물 개별조회 </title>
+<link href="/jsp_web/css/view.css" rel="stylesheet">
 </head>
 <body>
 

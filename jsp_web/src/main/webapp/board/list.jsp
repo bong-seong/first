@@ -22,19 +22,24 @@
 	<div class="container">
 	
 		<h3 class="cname"></h3>
-		<div class="funcbtn">
-			<button type="button" onclick="allboard()"> 전체보기 </button>
-			<a href="write.jsp"> 글 쓰기 </a>
+		
+		<button type="button" onclick="allboard()" class="allboard"> 전체보기 </button>
+		
+		<div class="optionbox">
+			<div class="searchcount"> 총 게시물수 : </div>
+			<select onchange="setListsize()" class="listsize">
+				<option value="3">3</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+			</select>
 		</div>
-		<div class="searchcount"> 총 게시물수 : </div>
-		<select onchange="setListsize()" class="listsize">
-			<option value="3">3</option>
-			<option value="5">5</option>
-			<option value="10">10</option>
-		</select>
 		<table class="boardTable table table-hover">
 		
 		</table>
+		
+		<div class="funcbtn">
+			<a href="write.jsp" class="boardwrite"> 새 글 쓰기 </a>
+		</div>
 		
 		
 		<!-- 페이징처리 버튼들 -->
@@ -59,7 +64,6 @@
 				<button onclick="getsearch()" type="button" id="searchbar"> 검색 </button>
 			</div>
 		</div>
-		
 	</div>
 
 
