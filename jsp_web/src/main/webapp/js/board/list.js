@@ -41,29 +41,24 @@ function getBoardList( page ){
 			
 			
 			// ------------------------- 테이블 출력 -------------------------- //
-			let html = `<tr>
-							<th width="5%">번호</th>
-							<th width="45%">제목</th>
-							<th width="9%">작성자</th>
-							<th width="20%%">작성일</th>
-							<th width="7%">조회수</th>
-							<th width="7%">좋아요</th>
-							<th width="7%">싫어요</th>
-						</tr>`
+			let html = ``
 			
 			r.boardList.forEach( (o,i) => {
 				
-				html += `<tr>
-							<td> ${ o.bno }</td>
-							<td> 
-								<a href="/jsp_web/board/view.jsp?bno=${o.bno}">${ o.btitle }</a>
-							</td>
-							<td> ${ o.mid }</td>
-							<td> ${ o.bdate }</td>
-							<td> ${ o.bview }</td>
-							<td> ${ o.bup }</td>
-							<td> ${ o.bdown }</td>
-						</tr>`
+				html += `<div class="boardcontent">
+							<div>
+								<img class="hpimg" src="/jsp_web/member/mimg/${ o.mimg == null ? 'default.png' : o.mimg}">
+								<span class="mid"> ${ o.mid } </span>
+								<span class="bdate"> ${ o.bdate } </span>
+							</div>
+							<div class="btitle"> <a href="/jsp_web/board/view.jsp?bno=${o.bno}"> ${ o.btitle } </a> </div>
+							<div class="contentinfo">
+								<span><i class="far fa-eye"></i><span class="bview">${o.bview}</span></span>
+								<span><i class="far fa-thumbs-up"></i><span class="bup">${o.bup}</span></span>
+								<span><i class="far fa-thumbs-down"></i><span class="bdown">${o.bdown}</span></span>
+								<span><i class="far fa-comment-dots"></i><span class="rcount">${o.rcount}</span></i></span>
+							</div>
+						</div>`
 				
 			}) // forEach end
 			
@@ -153,7 +148,6 @@ function select_page( page ){
 		
 	}
 }
-
 
 /*
 	- 클릭한 pk[식별자] 이용하는 경우의 수

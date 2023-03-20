@@ -1,11 +1,71 @@
 @charset "UTF-8";
 
-.container h3{ margin-top: 100px; margin-bottom: 50px; }
+
+
+/* 게시물 출력 구역 */
+.boardbox{
+	width: 80%;
+	margin: 100px auto;
+}
+
+.boardtop{ 
+	text-align: center;
+	margin: 50px 0px;
+}
+.boardtop .cname { font-weight: bold; }
+
+.boardtopetc{
+	display: flex;
+	justify-content: space-between;
+}
+
+.writebtn{
+	border: none;
+	background-color: transparent;
+	font-size: 18px;
+	color : #8080ff;
+	border: none;
+	padding : 5px 10px;
+	font-weight: bold;
+}
+.allbtn{
+	background-color: transparent;
+	border: none;
+	color : #8080ff;
+	font-size: 18px;
+	padding : 5px 10px;
+	font-weight: bold;
+}
+
+
+.boardcontent{
+    border-top: solid 1px #e8e8e8;
+    padding: 30px 0;
+}
+
+.bdate{
+	font-size: 10px;
+	color : gray;
+}
+.btitle{
+	margin: 30px 0px;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.contentinfo{
+	text-align: right;
+}
+.contentinfo span { padding-left: 10px; }
+ 
 
 .funcbtn{ display: flex; justify-content: flex-end; }
+
 .pagebox{ 
 	width: 100%;
-	text-align: center; 
+	text-align: center;
+	border-top: solid 1px #e8e8e8; 
+	padding: 20px 0px;
 }
 .pagebox button {
 	width: 25px;
@@ -17,13 +77,15 @@
 .searchbox{
 	width: 500px;
 	display: flex; 
-	margin: 0 auto;
+	margin: 10px auto;
 	justify-content: center;
 	align-items: center;
 }
 
 .selectbox{
-	margin-right: 10px;
+	margin: 0px;
+	padding: 0px;
+	
 }
 
 .inputbox{
@@ -31,25 +93,7 @@
 	align-items: center;
 }
 
-.allboard{
-	background-color: transparent;
-	width: 100px;
-	height: 30px;
-	text-align: center;
-	color : #d5c1cd;
-	align-items: center;
-	border: solid 2px #d5c1cd;
-}
 
-.boardwrite{
-	background-color: transparent;
-	width: 100px;
-	height: 30px;
-	text-align: center;
-	color : #d5c1cd;
-	align-items: center;
-	border: solid 2px #d5c1cd;
-}
 
 .searchcount{
 	margin: 20px 0px;
@@ -57,8 +101,10 @@
 
 .listsize{
 	width: 100px;
-	height: 30px;
+	height: 35px;
+	border : none;
 }
+
 
 .optionbox{
 	display: flex;
@@ -67,6 +113,21 @@
 }
 
 .seletedpage{
-	color : #b08ca3;
+	color : #8080ff;
 	font-weight: bold;
 }
+
+.key{
+	width: 100px;
+	height: 35px;
+	border : none;
+}
+
+.keyword{
+	border : none;
+	border-bottom : solid 2px #e8e8e8;
+	margin: 0px 20px;
+}
+
+
+
