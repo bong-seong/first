@@ -26,7 +26,7 @@ $.ajax({
 	method : "get",
 	async : false,
 	success : ( r ) => {
-		
+		console.log( r );
 		r.data.forEach( (o) =>{
 			addrArray.push( o.주소 );
 		})
@@ -73,7 +73,7 @@ $.get("https://api.odcloud.kr/api/3035882/v1/uddi:5fae3cf5-bc15-4eba-87d8-8289b7
 	        kakao.maps.event.addListener(marker, 'click', function() {
 				// 모달 정보 담기
 				document.querySelector('.modal_title').innerHTML = o.약국명;
-				document.querySelector('.modal_content').innerHTML = o.주소;
+				document.querySelector('.modal_content').innerHTML = `대표전화 : ${o.대표전화} <br/> 주소 : ${o.주소}` ;
 				
 				// 모달 띄우기 
 		      	openModal();

@@ -18,7 +18,7 @@
 	/* display: none; 기본값 : 처음에 모달 숨기기 */
 }
 .modal_box{
-	background-color: white; width: 25%;
+	background-color: white; width: 40%;
 	padding: 3%; border-radius: 15px;
 	text-align: center;
 }
