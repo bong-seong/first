@@ -39,9 +39,10 @@
 				<li> <a href="/jsp_web/board/list.jsp?cno=2"> 커뮤니티 </a> </li>
 				<li> <a href="/jsp_web/board/list.jsp?cno=3"> QnA </a> </li>
 				<li> <a href="/jsp_web/board/list.jsp?cno=4"> 노하우 </a> </li>
-				<li> <a href="#"> 기능메뉴5 </a> </li>
-				<li> <a href="#"> 기능메뉴6 </a> </li>
-				<li> <a href="#"> 기능메뉴7 </a> </li>
+				<li> <a href="/jsp_web/api/api1.jsp"> api1 </a> </li>
+				<li> <a href="/jsp_web/api/api2.jsp"> api2 </a> </li>
+				<li> <a href="/jsp_web/api/api3.jsp"> api3[과제] </a> </li>
+				<li> <a href="#"> 기능메뉴 </a> </li>
 			</ul>
 			
 			<!-- 서브메뉴 -->
