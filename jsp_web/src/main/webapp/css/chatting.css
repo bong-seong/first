@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+.chattingbox{
+	width: 40%;
+	margin: 0 auto;
+}
+
+.contentbox{
+	height: 600px;
+	background-color: #bacee0;
+	/* 해당 구역크기보다 내용물이 커지면 스크롤 생성 */
+	overflow-y : scroll;
+}
+.msgbox{ 
+	width: 100%;
+	border: solid 1px #e8e8e8;
+	padding: 10px; 
+	resize: none;
+}
+.msgbox:focus {
+	outline: none;	
+}
+.chattingbtnbox{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.sendbtn{
+	padding: 10px 0px;
+	background-color: #fef01b;
+	width: 20%;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.sendcontent{
+	display: flex;
+	justify-content: flex-end;
+	align-items : flex-end;
+	margin: 10px 10px;
+}
+
+.date{
+	font-size: 10px;
+	margin: 0px 7px;
+}
+
+.content{ /* 내용물 */
+	background-color: white;
+	border-radius: 5px;
+	padding: 6px;
+	/* 해당 구역크기보다 내용물이 커지면 자동줄바꿈처리 */
+	max-width: 70%; /* 해당 구역크기의 최대 사이즈 */
+	word-break : break-all;
+	font-size: 13px;
+}
+
+.alarm{
+	width: 50%;
+	margin: 0 auto;
+	font-size: 10px;
+	background-color: #b1c3d5;
+	border-radius: 5px;
+	text-align: center;
+}
+.recvcontent{
+	display: flex;
+	justify-content: flex-start;
+	margin: 10px 10px;
+}
+
+
+.name{
+	font-size: 12px;
+}
+
+.contentdate{
+	display: flex;
+	align-items : flex-end;
+}
+
+.rcontent{
+	
+}
+
+.sendcontent .content{ /* 보낼때 내용 */ 
+	background-color: #ffeb33;
+}
+
+
+.contentbox::-webkit-scrollbar{
+	width: 8px;
+}
+
+.contentbox::-webkit-scrollbar-thumb{
+	height: 30%; /* 스크롤바의 길이 */
+    background: #95a5b3; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+.contentbox::-webkit-scrollbar-track{
+	background: transparent;
+}
+
+/*
+
+::-webkit-scrollbar : 스크롤바 영역에 대한 설정
+::-webkit-scrollbar-thumb : 스크롤바 막대에 대한 설정
+::-webkit-scrollbar-track  : 스크롤바 뒷 배경에 대한 설정
+
+*/
+
+
+
+
+
+
+
+
+

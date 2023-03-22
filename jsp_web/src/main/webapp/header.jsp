@@ -42,7 +42,7 @@
 				<li> <a href="/jsp_web/api/api1.jsp"> api1 </a> </li>
 				<li> <a href="/jsp_web/api/api2.jsp"> api2 </a> </li>
 				<li> <a href="/jsp_web/api/api3.jsp"> api3[과제] </a> </li>
-				<li> <a href="#"> 기능메뉴 </a> </li>
+				<li> <a href="/jsp_web/board/chatting.jsp"> 채팅 </a> </li>
 			</ul>
 			
 			<!-- 서브메뉴 -->
