@@ -50,23 +50,45 @@ if( memberInfo.mid == null ){ // memberInfo : 헤더js 존재하는 객체
 
 // 2. 클라이언트소켓이 접속했을때 이벤트/함수 정의
 function onopen( e ){ 
-	contentbox.innerHTML += `
-							<div class="alarm">
-								<span> 채팅방 입장하셨습니다. </span>
-							</div>` 
+	
+	sendInfo( memberInfo.mid+"님이 채팅방에 접속하셨습니다" , "alram" );
+	
 } 	// 접속했을때 하고싶은 함수 정의
 
 
-// 3. 클라이언트소켓이 서버에게 메시지를 보내기 [ @OnMessage ]
+// 3. 클라이언트소켓이 서버에게 메시지를 보내기 [ @OnMessage ] ( 1. 보내기버튼 눌렀을때 / 2. 입력창에서 엔터했을때 ) type = msg 
 function clientSend(){
 	
 	let msgbox = document.querySelector('.msgbox').value;
 	// ** 메시지 전송하기
-	clientsocket.send( msgbox ); // ---> @OnMessage
+		// JSON 형식의 문자열 타입 만들어서 문자열로 타입 전송
+		// JSON.parse( JSON 형식의 문자열타입 ) : 문자열 타입 --> JSON 타입으로 변환 
+		// JSON.stringify( JSON 형식의 객체 ) : JSON 타입 --> JSON 형식[모양]의 String 타입으로 변환
+		let msg ={
+			type : 'msg',
+			msgbox : msgbox
+		}
+	clientsocket.send( JSON.stringify( msg ) ); // ---> @OnMessage
 	
 	// 전송 성공시 채팅 입력창 초기화
 	document.querySelector('.msgbox').value = '';
 }
+
+// 4-2 type 에 따른 html 구별
+function messageType( msg ){
+	
+	let json = JSON.parse( msg );
+	
+	let html = ``;
+	
+	if( json.type == 'msg') {
+		html += `<div class="content"> ${ json.msgbox } </div>`
+	}else if( json.type == 'emo') {
+		html += `<div class="content emocontent"> <img src="/jsp_web/img/emoji/emo${ json.msgbox }.gif"> </div>`
+	}
+	return html;
+}
+
 
 // 4. 서버로부터 메시지가 왔을때 메시지 받기
 function clientRecv( e ){ // <------ e <------ getBasicRemote().sendText(msg)
@@ -75,12 +97,37 @@ function clientRecv( e ){ // <------ e <------ getBasicRemote().sendText(msg)
 	console.log( JSON.parse(e.data) ); // 문자열 json -> 객체json 형변환
 	
 	let data = JSON.parse( e.data ); // 전달받은 메시지 dto
-	
+		console.log( data )
+		
+	// 명단[ 여러개 = list/Array ] vs 메시지정보 [ 1개 = dto/object ]
+		// Array 타입 확인 : Array.isArray( 객체 ) : 해당 객체가 배열/리스트이면 true
+	if( Array.isArray( data ) ){
+		
+		let html =``;
+		
+		data.forEach( (o) =>{
+			
+			html += `<div class="conbox"> <!-- 접속 명단 1명기준 -->
+						<div> <img src="/jsp_web/member/mimg/${o.frommimg == null ? 'default.png' : o.frommimg }" class="hpimg"> </div>
+						<div class="name namebox"> ${o.frommid } </div>
+					</div>`
+					
+		})
+		document.querySelector('.conlistbox').innerHTML = html;
+	}	
+	else if( JSON.parse( data.msg ).type == 'alram' ){
+		
+		contentbox.innerHTML += `
+							<div class="alarm">
+								<span> ${ JSON.parse( data.msg ).msgbox } </span>
+							</div>` 
+		
+	}
 	// 보낸사람과 현재 유저가 일치하면 [ 내가 보낸 메시지 ]
-	if( data.frommid == memberInfo.mid ){
+	else if( data.frommid == memberInfo.mid ){
 		contentbox.innerHTML += `<div class="sendcontent">
 									<div class="date"> ${ data.time } </div>
-									<div class="content"> ${data.msg } </div>
+									${ messageType( data.msg ) }
 								</div>`;
 	}else{ // 내가 받은 메시지
 		contentbox.innerHTML += `<div class="recvcontent">
@@ -88,7 +135,7 @@ function clientRecv( e ){ // <------ e <------ getBasicRemote().sendText(msg)
 									<div class="rcontent">
 										<div class="name"> ${ data.frommid } </div>
 										<div class="contentdate">
-											<div class="content"> ${data.msg } </div>
+											${ messageType( data.msg ) }
 											<div class="date"> ${ data.time } </div>
 										</div>
 									</div>
@@ -103,7 +150,8 @@ function clientRecv( e ){ // <------ e <------ getBasicRemote().sendText(msg)
 
 // 5. 서버와 연결이 끊겼을때 [ 클라이언트소켓 객체가 초기화될때 -> F5 , 페이지 전환할때 등등 ]
 function clientClose( e ){
-	console.log('연결해제');
+	// 이미 세션이 종료후에 발생하는 함수이므로 아래 코드는 다른세션에게 전달 불가능
+	// sendInfo( memberInfo.mid+"님이 채팅방에서 나갔습니다" , "alram" );
 }
 
 
@@ -131,11 +179,31 @@ function clientClose( e ){
 // 6. 엔터키를 눌렀을때
 function enterkey(){
 	// 만약에 입력한 키코드가 13[엔터]이면 메시지 전송
-	console.log( window.event.keyCode );
 	if( window.event.keyCode == 13 ){
 		clientSend();
 	}
 }
+
+// 7. 이모티콘 출력
+getemo();
+function getemo(){
+	let html =``;
+	
+	for( let i=1; i<=43; i++ ){
+		html += `<img onclick="sendInfo( ${i} , 'emo' )" alt="" src="/jsp_web/img/emoji/emo${i}.gif">`
+	}
+	document.querySelector('.emolist').innerHTML = html ;
+}
+
+// 8. 
+function sendInfo( msgbox , type ){
+		let msg ={
+			type : type,
+			msgbox : msgbox
+		}
+	clientsocket.send( JSON.stringify( msg ) ); // ---> @OnMessage
+}
+
 
 
 /*
@@ -150,6 +218,10 @@ let textarea = document.querySelector('.msgbox');
 });
 */
 
+
+/*
+	
+*/
 
 
 

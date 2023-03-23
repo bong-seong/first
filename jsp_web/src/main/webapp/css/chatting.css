@@ -1,8 +1,12 @@
 @charset "UTF-8";
 
+.chattingwrap{ /* 채팅과 명단 */
+	display: flex;
+	justify-content: center;
+}
+
 .chattingbox{
-	width: 40%;
-	margin: 0 auto;
+	width: 40%;	
 }
 
 .contentbox{
@@ -20,9 +24,11 @@
 .msgbox:focus {
 	outline: none;	
 }
+
+/* 이모티콘 버튼 , 보내기 버튼있는 구역 */
 .chattingbtnbox{
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 }
 
 .sendbtn{
@@ -59,7 +65,7 @@
 
 .alarm{
 	width: 50%;
-	margin: 0 auto;
+	margin: 30px auto;
 	font-size: 10px;
 	background-color: #b1c3d5;
 	border-radius: 5px;
@@ -114,9 +120,36 @@
 
 
 
+.emobtn {
+	background-color: transparent;
+	border: none;
+	font-size: 20px;
+}
 
+.emolist{
+	width: 350px;
+	height: 300px;
+	overflow-y : scroll;
+}
+.emolist img{
+	width: 70px;
+}
 
+.emocontent{
+	background-color: transparent !important;
+}
+.conlistbox{
+	width: 20%;
+}
+	
+.conbox{
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
 
-
-
+.namebox{
+	font-size: 15px;
+	margin-left: 10px;
+}
 

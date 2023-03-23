@@ -1,11 +1,16 @@
+drop database if exists jsp_web;
+create database jsp_web;
 use jsp_web ;
 
 -- 회원 테이블
+drop table if exists reply;
 drop table if exists mpoint;
 drop table if exists friend;
 drop table if exists board;
 drop table if exists category;
 drop table if exists member ;
+
+drop table if exists product;
 
 create table member (
 	mno int auto_increment primary key,
@@ -58,6 +63,37 @@ create table board(
     foreign key ( mno ) references member ( mno ) on delete set null, -- [ 회원 ] PK 가 삭제되면 게시물
     foreign key ( cno ) references category ( cno ) on delete cascade -- [ 카테고리 ] PK 가 삭제되면 해당 카테고리에 해당하는 게시물 같이 삭제
 );
+
+/* 댓글 테이블 */
+create table reply(
+	rno			int auto_increment primary key , 
+    rcontent	longtext , 
+    rdate		datetime default now(),
+    rindex		int default 0 , -- 0 이면 최상위계층 , 1~ 해당 댓글[부모] 의 하위 댓글
+    mno			int ,
+    bno			int ,
+    foreign key( mno ) references member(mno) on delete set null ,
+    foreign key( bno ) references board(bno) on delete cascade 
+);
+
+/* 제품 테이블 */
+create table product(
+	pno int auto_increment primary key, 		-- 제품번호
+    pname varchar(500) not null,				-- 제품명
+    pcomment text not null,						-- 제품설명
+    pprice bigint not null,						-- 제품가격
+    pstate int default 1,						-- 상태 [ 1:판매중 / 2:거래중 / 3:판매완료 등등 ]
+    plat varchar(100) not null,
+    plng varchar(100) not null,
+    pview int default 0,
+    pdate datetime default now()
+);
+
+
+/* 제품 사진 테이블 */
+/* 제품 찜하기 테이블 */
+/* 제품 쪽지 테이블  */
+
 
 -- on delete cascade 	: PK 가 삭제되면 FK 같이 삭제
 -- on delete set null 	: PK 가 삭제되면 FK null 값으로 업데이트
