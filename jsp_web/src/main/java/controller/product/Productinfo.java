@@ -28,7 +28,14 @@ public class Productinfo extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<ProductDto> result = ProductDao.getInstance().getProduct();
+		request.setCharacterEncoding("UTF-8");			
+		String dong = request.getParameter("dong");		System.out.println( dong );
+		String seo = request.getParameter("seo");		System.out.println( seo );
+		String nam = request.getParameter("nam");		System.out.println( nam );
+		String book = request.getParameter("book");		System.out.println( book );
+		
+		
+		ArrayList<ProductDto> result = ProductDao.getInstance().getProduct( dong , seo , nam , book );
 		
 		String jsonArray = mapper.writeValueAsString(result);
 		

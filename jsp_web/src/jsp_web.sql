@@ -9,7 +9,7 @@ drop table if exists friend;
 drop table if exists board;
 drop table if exists category;
 drop table if exists member ;
-
+drop table if exists plike;
 drop table if exists product;
 
 create table member (
@@ -89,9 +89,19 @@ create table product(
     pdate datetime default now()
 );
 
+/* 제품 찜하기 테이블 */
+create table plike(
+	plikeno int auto_increment primary key,
+	mno int, 											-- 회원번호 = 누가
+    pno int, 											-- 제품번호 = 어떤 제품 찜했는지
+    foreign key ( mno ) references member ( mno ) on delete cascade,
+	foreign key ( pno ) references product ( pno ) on delete cascade
+);
+
+
 
 /* 제품 사진 테이블 */
-/* 제품 찜하기 테이블 */
+
 /* 제품 쪽지 테이블  */
 
 

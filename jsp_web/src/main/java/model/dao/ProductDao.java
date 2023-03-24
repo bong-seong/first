@@ -38,15 +38,20 @@ public class ProductDao extends Dao {
 	
 	
 	// 2. 제품 호출
-	public ArrayList<ProductDto> getProduct(){
+	public ArrayList<ProductDto> getProduct( String dong , String seo , String nam ,String book ){
 		
 		ArrayList<ProductDto> list = new ArrayList<>();
 		
-		String sql = "select * from product";
+		String sql = "select * from product where plng <= ? and plng >= ? and plat >= ? and plat <= ?";
 		
 		try{
 			
 			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, dong);
+			ps.setString(2, seo);
+			ps.setString(3, nam);
+			ps.setString(4, book);
 			
 			rs = ps.executeQuery();
 			
@@ -68,4 +73,65 @@ public class ProductDao extends Dao {
 	}
 	
 	
+	// 3. 찜하기
+	public boolean setplike( int pno , int mno ) {
+		
+		// 1. 등록할지 취소할지 검색 먼저하기
+		String sql = "select * from plike where pno = "+pno+" and mno = "+mno;
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			if( rs.next() ) { // 이미 찜하기를 한 제품
+				
+				sql = "delete from plike where pno = "+pno+" and mno = "+mno ;
+				ps = con.prepareStatement(sql);
+				ps.executeUpdate();
+				return false;
+				
+			}else {
+				
+				sql = "insert into plike ( pno , mno ) values ( "+pno+" , "+mno+" )";
+				ps = con.prepareStatement(sql);
+				ps.executeUpdate();
+				return true;
+			
+			}
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+	
+	// 4. 현재 회원이 해당 제품의 찜하기 상태 확인
+	public boolean getplike( int pno , int mno ) {
+		
+		String sql = "select * from plike where pno = "+pno+" and mno = "+mno;
+		
+			try {
+			
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			if( rs.next() ) { return true ; }
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
