@@ -63,5 +63,16 @@ a{ color: black; text-decoration: none; font-family: 'SUIT-Regular'; }
 
 /* -------------- 내프로필 -------------- */
 
+/* --------------- 본문 --------------- */
+
+.searchbox{
+	position: fixed; 
+	left: 10px; top: 40%; 
+	width: 100px; height: 100px; 
+	background-color: white; 
+	z-index: 100;
+}
+
+
 
 

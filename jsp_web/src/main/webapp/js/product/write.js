@@ -16,6 +16,8 @@ function onwrite(){
 	writeFormData.set( "plat" , plat );
 	writeFormData.set( "plng" , plng );
 		console.log( writeFormData );
+		
+	if( plat == 0 || plng == 0 ){ alert('위치 선택 후 등록해주세요.'); return;}
 	
 	$.ajax({
 		url : "/jsp_web/product/info",
@@ -25,6 +27,12 @@ function onwrite(){
 		processData : false,
 		success : ( r ) => {
 			console.log('ajax 통신'); console.log( r );
+			if( r == 'true' ){
+				alert('등록 성공');
+				location.href = "/jsp_web/index.jsp"
+			}else{
+				alert('등록 실패')
+			}
 		}
 	})
 }
@@ -35,8 +43,8 @@ function onwrite(){
 // ----------------------- 카카오 지도를 표시할 div 객체 -------------------------
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        center: new kakao.maps.LatLng( 37.37773589703581, 126.78118307978525 ), // 지도의 중심좌표
+        level: 4 // 지도의 확대 레벨
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -45,7 +53,8 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 var marker = new kakao.maps.Marker({ 
     // 지도 중심좌표에 마커를 생성합니다 
     position: map.getCenter() 
-}); 
+});
+
 // 지도에 마커를 표시합니다
 marker.setMap(map);
 
