@@ -14,7 +14,7 @@ function productlistprint(){
 					<span> ${p.pstate} </span>
 					<span> ${p.pview} </span>
 					<span> ${p.pdate} </span>
-					<span> <button onclick="setplike(${ p.pno })" type="button" class="plikebtn"> </button></span>
+					<span> <button onclick="setplike(${ p.pno })" type="button" class="plikebtn"> ❤ </button></span>
 				</div>`
 								
 	})

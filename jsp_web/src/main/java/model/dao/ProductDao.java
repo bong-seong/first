@@ -1,5 +1,7 @@
 package model.dao;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.dto.ProductDto;
@@ -13,19 +15,39 @@ public class ProductDao extends Dao {
 	// 1. 제품 등록
 	public boolean write( ProductDto dto ) {
 		
-		String sql = "insert into product( pname , pcomment , pprice , plat , plng ) value ( ? , ? , ? , ? , ?)";
+		// 1. 제품 우선 등록
+		String sql = "insert into product( pname , pcomment , pprice , plat , plng , mno ) "
+				+ " value ( ? , ? , ? , ? , ? , ? )";
 		
 		try {
-			
-			ps = con.prepareStatement(sql);
+			// insert 후 생성된 제품 pk 번호 호출
+			ps = con.prepareStatement(sql , Statement.RETURN_GENERATED_KEYS );
 			
 			ps.setString(1, dto.getPname() );
 			ps.setString(2, dto.getPcomment() );
 			ps.setLong(3, dto.getPprice() );
 			ps.setString(4, dto.getPlat() );
 			ps.setString(5, dto.getPlng() );
+			ps.setInt(6, dto.getMno() );
 			
 			ps.executeUpdate();
+			
+			// insert 후 생성된 제품 pk 번호 호출
+			rs = ps.getGeneratedKeys();
+			if( rs.next() ) { // 만약에 생성된 제품 pk번호가 존재하면
+				for( String pimgname : dto.getPimglist() ) {
+					// dto 내 첨부파일명 리스트에 하나씩 첨부파일명을 insert 하기
+					sql = "insert into pimg( pimgname , pno ) values ( ? , ? )";
+					
+					ps = con.prepareStatement(sql);
+					
+					ps.setString(1, pimgname); 
+					ps.setInt(2, rs.getInt(1) );
+					
+					ps.executeUpdate();
+					
+				}
+			}
 			
 			return true;
 			
@@ -42,7 +64,8 @@ public class ProductDao extends Dao {
 		
 		ArrayList<ProductDto> list = new ArrayList<>();
 		
-		String sql = "select * from product where plng <= ? and plng >= ? and plat >= ? and plat <= ?";
+		String sql = "select p.* , m.mid , m.mimg from product p natural join member m "
+				+ " where p.plng <= ? and p.plng >= ? and p.plat >= ? and p.plat <= ? ";
 		
 		try{
 			
@@ -57,11 +80,25 @@ public class ProductDao extends Dao {
 			
 			while( rs.next() ) {
 				
-				list.add( new ProductDto(
-						rs.getInt(1), rs.getString(2), rs.getString(3),
-						rs.getLong(4), rs.getInt(5), rs.getString(6),
-						rs.getString(7), rs.getInt(8), rs.getString(9)
-				));
+				ArrayList<String> pimglist = new ArrayList<>();
+				sql = "select * from pimg where pno = " + rs.getInt(1); // 동일한 제품번호의 이미지들을 호출
+				
+				ps = con.prepareStatement(sql);
+				ResultSet rs2 = ps.executeQuery();
+						
+				
+				while( rs2.next() ) {
+					pimglist.add( rs2.getString(2) ); // 검색된 이미지이름을 리스트에 저장
+				}
+				
+				ProductDto dto = new ProductDto( 
+						rs.getInt(1) , rs.getString(2) , rs.getString(3), 
+						rs.getInt(4) , rs.getInt(5) , rs.getString(6) , 
+						rs.getString(7) , rs.getInt(8) , rs.getString(9) , 
+						rs.getInt(10) , rs.getString(11) , rs.getString(12) , pimglist );
+				
+				list.add( dto );
+						
 			}
 		
 			

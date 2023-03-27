@@ -10,7 +10,9 @@ drop table if exists board;
 drop table if exists category;
 drop table if exists member ;
 drop table if exists plike;
+drop table if exists pimg;
 drop table if exists product;
+
 
 create table member (
 	mno int auto_increment primary key,
@@ -86,7 +88,17 @@ create table product(
     plat varchar(100) not null,
     plng varchar(100) not null,
     pview int default 0,
-    pdate datetime default now()
+    pdate datetime default now(),
+    mno int, 
+    foreign key ( mno ) references member ( mno ) on delete cascade
+);
+
+/* 제품 사진 테이블 */
+create table pimg(
+	pimgno bigint auto_increment primary key,	-- 사진 식별변호
+    pimgname longtext not null,					-- 사진명
+    pno int , 									-- 해당 사진의 연결된 제품번호
+    foreign key ( pno ) references product ( pno ) on delete cascade
 );
 
 /* 제품 찜하기 테이블 */
@@ -100,7 +112,6 @@ create table plike(
 
 
 
-/* 제품 사진 테이블 */
 
 /* 제품 쪽지 테이블  */
 

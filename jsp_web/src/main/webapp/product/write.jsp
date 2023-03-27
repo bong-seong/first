@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/jsp_web/css/prod_write.css" rel="stylesheet">
 
 </head>
 <body>
@@ -29,8 +30,40 @@
 				위치 :
 				<div id="map" style="width:100%;height:350px;"></div>
 			</div>
+				
+			<!-- 드래그앤드랍 : multiple -->
+			<div class="fileDrop">
+				[드래그앤드랍] 여기에 첨부파일을 넣어주세요.
+			</div>
 			<button onclick="onwrite()" type="button"> 제품등록 </button>
-					
+				
+				
+			<div class="file_test">
+				<!-- 
+				첨부파일 한개
+				<div>
+					<h3> 첨부파일 한개 </h3>
+					<input type="file" name="pfile" accept="image/*">
+				</div>
+				
+				첨부파일 여러개
+				<div>
+					<h3> 첨부파일 여러개 (인풋 여러개)</h3>
+					<input type="file" name="pfile1">	<br/>
+					<input type="file" name="pfile2">   <br/>
+					<input type="file" name="pfile3">
+				</div>
+				-->
+				<!-- 첨부파일 여러개 -->
+				<!-- 
+				<div>
+					<h3> 첨부파일 여러개 [ 멀티플 / cos.jar 불가능 , commons.jar 가능 ]</h3>
+					<input type="file" name="pfiles" multiple="multiple" accept="image/*">
+				</div>
+				-->
+				
+				
+			</div>
 		</form>
 	</div>
 
