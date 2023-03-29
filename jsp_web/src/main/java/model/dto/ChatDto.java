@@ -10,6 +10,8 @@ public class ChatDto {
 	private int from_mno;
 	private int to_mno;
 	// 추가필드
+	private String frommid;		// 보낸 사람의 아이디
+	private String frommimg;	// 보낸 사람의 프로필
 	
 	
 	// 2. 생성자
@@ -75,6 +77,22 @@ public class ChatDto {
 
 	public void setTo_mno(int to_mno) {
 		this.to_mno = to_mno;
+	}
+	
+	public String getFrommid() {
+		return frommid;
+	}
+
+	public void setFrommid(String frommid) {
+		this.frommid = frommid;
+	}
+
+	public String getFrommimg() {
+		return frommimg;
+	}
+
+	public void setFrommimg(String frommimg) {
+		this.frommimg = frommimg;
 	}
 
 	@Override

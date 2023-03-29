@@ -55,4 +55,51 @@ function getLogin(){
 		}
 	
 	})
+} // end
+
+let alarmSocket = null;
+
+if( memberInfo.mid == null ){
+	
+}else{
+	// JS 실행주체 = 클라이언트 // JAVA = 서버
+	// 1. JS : 클라이언트소켓 생성
+	alarmSocket = new WebSocket('ws://localhost:8080/jsp_web/alarm/'+memberInfo.mid )
+	// 2. 클라이언트 소켓내 이벤트 메소드 대입
+	alarmSocket.onopen = ( e ) => { console.log('알림용 서버소켓에 들어옴') }
+	alarmSocket.onclose = ( e ) => { console.log('알림용 서버소켓에서 나감') }
+	alarmSocket.onerror = ( e ) => { console.log('알림용 서버소켓 오류') }
+	alarmSocket.onmessage = ( e ) => { onalarm(e) }
 }
+//
+function onalarm(e){
+	
+	let msgbox = document.querySelector('.msgbox');
+	
+	msgbox.style.bottom = "50px";
+	
+	// * 4초 후에 이벤트 실행
+	// n초 후에 이벤트 실행 : setTimeout( ()=>{} , 밀리초 )
+	// n초 마다 이벤트 실행 : setInterval( ()=>{} , 밀리초 )
+	
+	setTimeout( ()=>{ msgbox.style.bottom = "-100px"; } , 4000 )
+	
+	// 여러명이 채팅 요청하면 Dao 메소드 충돌 발생
+		// Dao 메소드에 synchronized
+		// 스레드1 해당 메소드를 사용하고 있을때 [ return 전 ] 다른 스레드2 해당 메소드에 대기상태
+		// 멀티스레드 : Http
+	getcontent();
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+

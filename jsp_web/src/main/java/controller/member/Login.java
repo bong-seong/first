@@ -34,7 +34,6 @@ public class Login extends HttpServlet {
 		String json = mapper.writeValueAsString( result );
 			System.out.println("json : " + json );
 		
-		
 		// 3. 응답
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
