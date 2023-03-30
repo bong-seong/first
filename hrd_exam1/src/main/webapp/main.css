@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+
+*{ margin: 0px; padding: 0px; }
+
+.header{
+	background-color: #3157D2;
+}
+
+.header h1{
+	padding: 20px;
+	color: white;
+	font-size: 20px;
+}
+
+.nav{
+	background-color: #8A8BE3;
+}
+.nav a {
+	color: white;
+	margin: 20px 20px;
+	text-decoration: none;
+	font-size: 15px;
+	
+}
+.nav td {
+	padding: 10px 0px;
+}
+.body_color{
+	background-color: #E4E4E4;	
+}
+.join_table{
+	font-weight: bold;
+	width: 80%;
+}
+.table_text{
+	text-align: center;
+	font-weight: bold;
+}
+
+.join_table input {
+	width: 98%;
+}
+
+.footer_text{
+	background-color: #3667B4;
+	color: white;
+	padding: 15px;
+	font-size: 12px;
+}
+
+.title{
+	padding: 15px;
+	font-size: 20px;
+}
+
+.joinform{
+	padding-bottom: 100px;
+}
+.view_table{
+	text-align: center;
+}
+
+.view_table a{
+	text-decoration: none;
+}
+
+.sum_table{
+	text-align: center;
+}
+
+.table_box{
+	padding-bottom: 100px;
+}
+
+ol{
+	padding: 40px;
+}
+
+p {
+	padding: 10px 40px;
+}
