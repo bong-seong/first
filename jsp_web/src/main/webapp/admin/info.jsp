@@ -10,6 +10,13 @@
 <body>
 	<%@ include file="/header.jsp" %>
 	<div class="user_list_box">
+	
+		<h3> chart.js 사용 </h3>
+	
+		<div>
+		  <canvas id="myChart"></canvas>
+		</div>
+	
 		<h3> 모든 회원 명단 </h3>
 		<p class="total_user"></p> 
 		<div class="submenu_box">
@@ -34,7 +41,7 @@
 				<option value="mid"> 아이디 </option>
 				<option value="memail"> 이메일 </option>
 			</select>
-			<div class="search_box">
+			<div class="search_box_admin">
 				<input type="text" class="keyword">
 				<button onclick="user_search()" type="button" class="searchinput"> 검색 </button>
 			</div>
@@ -42,6 +49,8 @@
 		
 	</div>
 	
+	<!-- chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="/jsp_web/js/admin/info.js" type="text/javascript"></script>
 </body>
 </html>

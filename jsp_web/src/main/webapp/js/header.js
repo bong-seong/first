@@ -47,7 +47,7 @@ function getLogin(){
 							</div>
 							${r.mid}님
 							<a href="#"> 쪽지함 </a>
-							<a href="#"> ${r.mpoint} point </a>`
+							<a href="/jsp_web/member/point.jsp"> ${r.mpoint} point </a>`
 				}
 			}
 			
