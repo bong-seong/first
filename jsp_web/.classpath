@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="C:/mysql-connector-java.jar"/>
 	<classpathentry kind="lib" path="C:/commons-fileupload.jar"/>
 	<classpathentry kind="lib" path="C:/commons-io.jar"/>
+	<classpathentry kind="lib" path="C:/jsoup.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

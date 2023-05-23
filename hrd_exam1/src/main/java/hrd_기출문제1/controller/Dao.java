@@ -175,7 +175,9 @@ public class Dao {
 		
 		ArrayList<MemberDto> list = new ArrayList<>();
 		
-		String sql = "select m.custno , m.custname , if(m.grade = 'A' , 'VIP' , if( m.grade = 'B' , '일반' , '직원' ) )as grade , sum( mo.price) as sum from member_tbl_02 m , money_tbl_02 mo "
+		String sql = "select m.custno , m.custname , "
+				+ " if(m.grade = 'A' , 'VIP' , if( m.grade = 'B' , '일반' , '직원' ) )as grade , "
+				+ " sum( mo.price) as sum from member_tbl_02 m , money_tbl_02 mo "
 				+ " where m.custno = mo.custno group by m.custno order by sum desc ";
 		
 		try {
